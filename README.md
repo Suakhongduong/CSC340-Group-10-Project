@@ -97,7 +97,7 @@ Scenario: Customer requests a quote
   Then the system sends the quote request to the selected provider
   And the customer can request a quote
 ```
-US-6 -Accept a Quote and Schedule a Service
+* US-6 -Accept a Quote and Schedule a Service
 Story: As a customer, I want to accept a provider's quote and choose an appointment time, so that I can schedule my home repair service.
 
 Acceptance:
@@ -107,7 +107,7 @@ Scenario: Customer accepts a quote
   When the customer clicks "Accept Quote" and selects an available date and time
   Then the system creates the customer's appointment
 ```
-US-7 -View Appointments
+* US-7 -View Appointments
 Story: As a customer, I want to view my upcoming and previous appointments, so that I can keep track of my services.
 
 Acceptance:
@@ -117,7 +117,7 @@ Scenario: Customer views appointments
   When the customer clicks "My Appointments"
   Then the system displays the customer's upcoming and previous appointments
 ```
-US-8 -Cancel an Appointment
+* US-8 -Cancel an Appointment
 Story: As a customer, I want to cancel an upcoming appointment, so that I can manage appointments I no longer need.
 
 Acceptance:
@@ -127,7 +127,7 @@ Scenario: Customer cancels an appointment
   When the customer clicks "Cancel Appointment" and confirms the cancellation
   Then the system cancels the appointment and removes it from the upcoming appointments list
 ```
-US-9 -Leave a Review
+* US-9 -Leave a Review
 Story: As a customer, I want to rate a provider and write a review after a completed service, so that I can share my experience.
 
 Acceptance:
@@ -137,7 +137,7 @@ Scenario: Customer leaves a review
   When the customer selects "Leave a Review," chooses a rating, writes a review, and submits it
   Then the system saves the rating and review to the provider's profile
 ```
-US-10 -Return Home Using Logo
+* US-10 -Return Home Using Logo
 
 Story: As a customer, I want to click the HomeFix Now logo, so that I can quickly return to the home page.
 Acceptance:
@@ -147,3 +147,6 @@ Scenario: Customer returns to the home page
   When the customer clicks the HomeFix Now logo
   Then the system redirects the customer to the home page
 ```
+### 2.2 Provider (Trainer) Stories
+
+- *US-5 - 
