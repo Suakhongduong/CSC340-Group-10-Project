@@ -39,13 +39,13 @@
 Story: As a customer, I want to be able to create and modify my profile, so that my personal and contact information is kept up to date
 
 Acceptance:
-
+```gherkin
 Scenario: Customer create a profile
   Given the customer does not have a profile and is on the account creation page
   When the customer enters their name, contact info, and address and clicks "Create Account"
   Then the system creates and save the profile displays the customer's account
   And the customer can view their profile
-
+```
 
 * US-2 - Search for Services
 
