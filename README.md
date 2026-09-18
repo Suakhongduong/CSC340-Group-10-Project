@@ -46,7 +46,7 @@ Scenario: Customer create a profile
   Then the system creates and save the profile displays the customer's account
   And the customer can view their profile
 
-  US-2 - Search for Services
+* US-2 - Search for Services
 
 Story: As a customer, I want to search for home repair services, so that I can quickly find the type of service I need.
 
@@ -58,7 +58,7 @@ Scenario: Customer searches for a service
  Then the system displays available plumbing services and providers
  And the customer can pick which service they want
 
- US-3 - Filter Service Providers
+* US-3 - Filter Service Providers
 
 Story: As a customer, I want to filter service providers by price and rating, so that I can find providers that match my preferences.
 
@@ -70,7 +70,7 @@ Scenario: Customer filters providers
  Then the system displays providers matching the selected filter
  And the customer can pick which service they want based off the rating or price
 
-  US-4 -View Provider Profile
+* US-4 -View Provider Profile
 
 Story: As a customer, I want to view a provider's profile, so that I can review their qualifications and services before booking.
 Acceptance:
@@ -81,7 +81,8 @@ Scenario: Customer views a provider profile
  Then the system displays the provider's services, qualifications, ratings, and available appointments
  And the customer can view the provider's profile
 
- US-5 — Request a Quote
+
+* US-5 — Request a Quote
  Story: As a customer, I want to request a price quote from a provider, so that I can know the estimated cost before booking a service.
  Acceptance:
 
