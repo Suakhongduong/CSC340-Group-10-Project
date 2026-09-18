@@ -6,6 +6,7 @@
 > Khanh Hoang Cao
  
 >Jerney Whitaker
+## Course: 340-01
 
 ## Description 
 > HomeFix Now is an on-demand home maintenance app made to connect homeowners and renters with local licensed pros like plumbers, electricians, and handymen. The platform helps users find reliable service providers, ask for price quotes, schedule home repair appointments, and leave reviews. On the other side, service providers can show their qualifications, post available services, keep track of job stats, and respond to client reviews through a clean, simple dashboard.
