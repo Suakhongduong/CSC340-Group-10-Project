@@ -76,6 +76,7 @@ Scenario: Customer filters providers
 * US-4 -View Provider Profile
 
 Story: As a customer, I want to view a provider's profile, so that I can review their qualifications and services before booking.
+
 Acceptance:
 ```gherkin
 Scenario: Customer views a provider profile 
@@ -87,6 +88,7 @@ Scenario: Customer views a provider profile
 
 * US-5 -Request a Quote
  Story: As a customer, I want to request a price quote from a provider, so that I can know the estimated cost before booking a service.
+
  Acceptance:
 ```gherkin
 Scenario: Customer requests a quote
