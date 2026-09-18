@@ -85,7 +85,7 @@ Scenario: Customer views a provider profile
  And the customer can view the provider's profile
 ```
 
-* US-5 — Request a Quote
+* US-5 -Request a Quote
  Story: As a customer, I want to request a price quote from a provider, so that I can know the estimated cost before booking a service.
  Acceptance:
 ```gherkin
