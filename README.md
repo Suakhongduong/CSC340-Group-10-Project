@@ -34,7 +34,7 @@
 
 ## 2. Functional Requirements (User Stories)
 ## 2.1 Customer Stories
-US-1 - Create and Modify Customer Profile
+* US-1 - Create and Modify Customer Profile
 
 Story: As a customer, I want to be able to create and modify my profile, so that my personal and contact information is kept up to date
 
