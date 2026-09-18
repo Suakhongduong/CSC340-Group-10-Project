@@ -52,43 +52,46 @@ Scenario: Customer create a profile
 Story: As a customer, I want to search for home repair services, so that I can quickly find the type of service I need.
 
 Acceptance:
-
+```gherkin
 Scenario: Customer searches for a service 
  Given the customer is on the HomeFix Now home page 
  When the customer enters "plumbing" into the search bar and clicks the search button 
  Then the system displays available plumbing services and providers
  And the customer can pick which service they want
+```
 
 * US-3 - Filter Service Providers
 
 Story: As a customer, I want to filter service providers by price and rating, so that I can find providers that match my preferences.
 
 Acceptance:
-
+```gherkin
 Scenario: Customer filters providers 
  Given the customer has searched for a home repair service 
  When the customer selects a price or rating filter 
  Then the system displays providers matching the selected filter
  And the customer can pick which service they want based off the rating or price
+```
 
 * US-4 -View Provider Profile
 
 Story: As a customer, I want to view a provider's profile, so that I can review their qualifications and services before booking.
 Acceptance:
-
+```gherkin
 Scenario: Customer views a provider profile 
  Given the customer is viewing a list of service providers 
  When the customer clicks on a provider's name or profile
  Then the system displays the provider's services, qualifications, ratings, and available appointments
  And the customer can view the provider's profile
-
+```
 
 * US-5 — Request a Quote
  Story: As a customer, I want to request a price quote from a provider, so that I can know the estimated cost before booking a service.
  Acceptance:
-
+```gherkin
 Scenario: Customer requests a quote
   Given the customer is viewing a provider's profile
   When the customer selects a service and clicks "Request Quote"
   Then the system sends the quote request to the selected provider
   And the customer can request a quote
+```
