@@ -10,6 +10,37 @@
 
 ## Description 
 > HomeFix Now is an on-demand home maintenance app made to connect homeowners and renters with local licensed pros like plumbers, electricians, and handymen. The platform helps users find reliable service providers, ask for price quotes, schedule home repair appointments, and leave reviews. On the other side, service providers can show their qualifications, post available services, keep track of job stats, and respond to client reviews through a clean, simple dashboard.
+>
+> **Glossary:** Terms used in the project
+
+* **Provider:** A licensed professional or handyman who provides home repair and maintenance services.
+* **Customer:** A homeowner or renter who uses HomeFix Now to find and schedule home repair services.
+* **Profile:** A collection of information about a customer or provider, including contact information, address, qualifications, and services.
+* **Service:** A specific home repair or maintenance offering provided by a provider, such as plumbing, electrical, or handyman work.
+* **Quote:** The estimated price provided by a service provider for a requested service.
+* **Appointment:** A scheduled time between a customer and provider for a home repair or maintenance service.
+* **Review:** A rating and written feedback submitted by a customer after completing a service.
+
+**Primary Users and Roles:**
+
+* **Customer** — Find local providers, compare services, schedule appointments, and manage home repair services.
+* **Provider** — Offer home repair services, manage appointments, and respond to customer reviews.
+
+**Scope (this semester):**
+
+* Customer and provider profiles
+* Search and browse home repair services and providers
+* Provider information, ratings, and reviews
+* Requesting and accepting service quotes
+* Booking and managing appointments
+* Customer reviews and ratings
+
+**Out of scope (deferred):**
+
+* Online payment processing
+* Real-time GPS tracking of providers
+* In-app video calls or consultations
+* Automated emergency repair services
 
 ## 1. Overview
 ## App Functions
