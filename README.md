@@ -57,11 +57,7 @@
     2. Create services - Post repair services (like plumbing checks or outlet repairs) with upfront prices and available time slots.
     3. View customer statistics - Check booking histories, total service requests, finished jobs, and overall earnings.
     4. Reply to reviews - Leave professional responses to customer reviews and ratings on finished jobs.
-4. SysAdmin:
-    1. Manage user access - Check contractor licenses, verify credentials, and manage account suspensions or reinstatements.
-    2. Moderate services - Review and take down fake, dangerous, or misleading repair listings.
-    3. Moderate reviews - Flag and remove inappropriate, fake, or spam reviews.
-    4. View usage statistics - Track overall app activity, active bookings, payment volume, and user growth.
+
 
 ## 2. Functional Requirements (User Stories)
 ## 2.1 Customer Stories
