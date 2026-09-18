@@ -11,7 +11,7 @@
 ## Description 
 > HomeFix Now is an on-demand home maintenance app made to connect homeowners and renters with local licensed pros like plumbers, electricians, and handymen. The platform helps users find reliable service providers, ask for price quotes, schedule home repair appointments, and leave reviews. On the other side, service providers can show their qualifications, post available services, keep track of job stats, and respond to client reviews through a clean, simple dashboard.
 
-1. Overview
+## 1. Overview
 ## App Functions
 1. Customer:
     1. Create/modify customer profile - customers can create an account and update their name, contact info, and address.
@@ -32,8 +32,8 @@
     3. Moderate reviews - Flag and remove inappropriate, fake, or spam reviews.
     4. View usage statistics - Track overall app activity, active bookings, payment volume, and user growth.
 
-2. Functional Requirements (User Stories)
-2.1 Customer Stories
+## 2. Functional Requirements (User Stories)
+## 2.1 Customer Stories
 US-1 - Create and Modify Customer Profile
 
 Story: As a customer, I want to be able to create and modify my profile, so that my personal and contact information is kept up to date
