@@ -174,6 +174,81 @@ Scenario: Customer returns to the home page
   When the customer clicks the HomeFix Now logo
   Then the system redirects the customer to the home page
 ```
-### 2.2 Provider (Trainer) Stories
+### 2.2 Provider Stories
+* US-11 — Manage Provider Profile
 
-- *US-5 - 
+Story: As a provider, I want to create, update, or remove my professional profile including my licenses, skills, hourly rates, and working hours, so that customers can verify my qualifications.  
+Acceptance:
+  ```gherkin
+Scenario: Update provider skills and working hours
+    Given I am logged in as a trade professional on my profile management page
+    When I add a new trade license, set my hourly rate to $75, and click "Save Changes"
+    Then my updated qualifications and rates should be saved and displayed on my public profile
+  ```
+
+- * US-12 — Post Repair Services
+
+Story: As a provider, I want to post specific repair services with upfront prices and available time slots, so that customers can browse and book service appointments directly.  
+Acceptance:
+```gherkin
+Scenario: Create a new repair service listing
+    Given I am on the service creation page
+    When I fill in the service title "Outlet Repair", set an upfront price of $100, and assign available time slots
+    Then the system should publish the service and make it visible in the customer search catalog
+```
+
+- * US-13 — View Job Statistics
+
+Story: As a provider, I want to access a dashboard displaying my booking histories, total service requests, finished jobs, and overall earnings, so that I can track my business performance.  
+Acceptance:
+```gherkin
+Scenario: View provider dashboard metrics
+    Given I am on my provider dashboard
+    When the page loads
+    Then I should see real-time statistics showing my total completed jobs, total earnings, and incoming service requests
+```
+
+- * US-14 — Reply to Reviews
+
+Story: As a provider, I want to post professional responses to customer reviews and ratings on finished jobs, so that I can maintain a positive online reputation.  
+Acceptance:
+```gherkin
+Scenario: Respond to a customer review
+    Given I have a completed job with a customer review on my profile
+    When I type a professional response into the reply section and click "Submit"
+    Then my response should be posted directly under the customer's original review
+```
+
+## 3. Non‑Functional Requirements (make them measurable)
+**Performance:** Service search results and dashboard pages must load within 2 seconds.
+
+**Availability/Reliability:** The platform must maintain 99.5% uptime during operating hours (7:00 AM – 9:00 PM EST).
+
+**Security/Privacy:** Passwords must be encrypted using bcrypt hashing; provider trade licenses must be stored securely.
+
+**Usability:** The web user interface must be fully responsive across mobile and desktop browsers.
+
+## 4. Assumptions, Constraints, and Policies
+**Assumptions:** Users have active internet connections; providers hold valid trade licenses.
+
+**Constraints:** The system must be developed within the semester timeframe using standard web stacks.
+
+**Policies:** Inappropriate or spam reviews will be removed according to platform community guidelines.
+
+## 5. Milestones (course‑aligned)
+**M1 Requirements** — this file + stories opened as issues.
+
+**M2 High‑fidelity prototype** — core customer/provider flows fully interactive.
+
+**M3 Design** — architecture, schema, API outline.
+
+**M4 Backend API** — key endpoints + tests.
+
+**M5 Increment** — ≥2 use cases end‑to‑end.
+
+**M6 Final** — complete system & documentation.
+
+## 6. Change Management
+Stories are living artifacts; changes are tracked via repository issues and linked pull requests.
+
+Major changes should update this SRS.
