@@ -3,7 +3,7 @@
 > HomeFix Now
 
 ## Team Members
-> Khanh Hoang Cao
+> Khanh Hoang Cao 
  
 >Jerney Whitaker
 ## Course: 340-01
