@@ -246,6 +246,7 @@ Scenario: Respond to a customer review
 
 **M5 Increment** — ≥2 use cases end‑to‑end.
 
+
 **M6 Final** — complete system & documentation.
 
 ## 6. Change Management
