@@ -1,126 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../style.css">
 
-    <title>Services</title>
+    <title>HomeFix - Services</title>
 </head>
 
 <body>
 
-    <nav>
+    <nav class="site-nav">
 
-        <a href="Customer Home.html" class="home">
+        <a href="Customer Home.html" class="logo">
             HomeFix
         </a>
 
-        <a href="Customer Home.html">
-            Home
-        </a>
+        <div class="nav-links">
 
-        <a href="Customer Profile.html">
-            Profile
-        </a>
+            <a href="Customer Home.html">
+                Home
+            </a>
+
+            <a href="Services.html" class="active">
+                Services
+            </a>
+
+            <a href="Customer Profile.html">
+                Profile
+            </a>
+
+            <a href="Appointments.html">
+                Appointments
+            </a>
+
+        </div>
 
     </nav>
 
 
-    <div class="services-page">
+    <main class="content-page">
 
-        <h1>Find a Service</h1>
+        <div class="page-title">
 
-        <p>
-            Search or browse services available in your area.
-        </p>
+            <span class="blue-label">
+                HOME SERVICES
+            </span>
+
+            <h1>
+                Find a service for your home
+            </h1>
+
+            <p>
+                Browse services and connect with
+                qualified professionals.
+            </p>
+
+        </div>
 
 
         <div class="service-search">
 
             <input
-                type="text"
-                placeholder="Search for a service..."
+                type="search"
+                placeholder="Search services..."
             >
 
-            <button type="button">
-                Search
-            </button>
+            <select>
+
+                <option>
+                    All Services
+                </option>
+
+                <option>
+                    Plumbing
+                </option>
+
+                <option>
+                    Electrical
+                </option>
+
+                <option>
+                    Handyman
+                </option>
+
+                <option>
+                    Home Repairs
+                </option>
+
+            </select>
 
         </div>
 
 
-        <div class="service-options">
+        <section class="service-grid">
 
-            <div class="service-option">
+            <article class="service-card">
 
-                <h2>Plumbing</h2>
-
-                <p>
-                    Get help with leaks, pipes, faucets,
-                    and other plumbing problems.
-                </p>
-
-                <button type="button">
-                    View Providers
-                </button>
-
-            </div>
-
-
-            <div class="service-option">
-
-                <h2>Electrical</h2>
+                <h2>
+                    Plumbing
+                </h2>
 
                 <p>
-                    Find professionals for electrical
-                    repairs and installations.
+                    Get help with leaks, drains, faucets,
+                    pipes, toilets, and water heaters.
                 </p>
 
-                <button type="button">
-                    View Providers
-                </button>
+                <a
+                    href="Providers.html"
+                    class="card-link"
+                >
+                    Browse Plumbers →
+                </a>
 
-            </div>
+            </article>
 
 
-            <div class="service-option">
+            <article class="service-card">
 
-                <h2>Handyman</h2>
+                <h2>
+                    Electrical
+                </h2>
 
                 <p>
-                    Find help with general home repairs
-                    and maintenance.
+                    Find professionals for outlets,
+                    lighting, wiring, and installations.
                 </p>
 
-                <button type="button">
-                    View Providers
-                </button>
+                <a
+                    href="Providers.html"
+                    class="card-link"
+                >
+                    Browse Electricians →
+                </a>
 
-            </div>
+            </article>
 
 
-            <div class="service-option">
+            <article class="service-card">
 
-                <h2>Home Repairs</h2>
+                <h2>
+                    Handyman
+                </h2>
 
                 <p>
-                    Find professionals for other home
-                    maintenance and repair needs.
+                    Get assistance with furniture assembly,
+                    mounting, and everyday repairs.
                 </p>
 
-                <button type="button">
-                    View Providers
-                </button>
+                <a
+                    href="Providers.html"
+                    class="card-link"
+                >
+                    Browse Handymen →
+                </a>
 
-            </div>
+            </article>
 
-        </div>
 
-    </div>
+            <article class="service-card">
+
+
+                <h2>
+                    Home Repairs
+                </h2>
+
+                <p>
+                    Find help with general home maintenance
+                    and household repair projects.
+                </p>
+
+                <a
+                    href="Providers.html"
+                    class="card-link"
+                >
+                    Browse Professionals →
+                </a>
+
+            </article>
+
+        </section>
+
+    </main>
 
 </body>
-
 </html>

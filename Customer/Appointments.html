@@ -1,99 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../style.css">
 
-    <title>Appointments</title>
+    <title>HomeFix - Appointments</title>
 </head>
 
 <body>
 
-    <nav>
+    <nav class="site-nav">
 
-        <a href="Customer Home.html" class="home">
+        <a href="Customer Home.html" class="logo">
             HomeFix
         </a>
 
-        <a href="Customer Home.html">
-            Home
-        </a>
+        <div class="nav-links">
 
-        <a href="Customer Profile.html">
-            Profile
-        </a>
+            <a href="Customer Home.html">
+                Home
+            </a>
+
+            <a href="Services.html">
+                Services
+            </a>
+
+            <a href="Customer Profile.html">
+                Profile
+            </a>
+
+            <a href="Appointments.html" class="active">
+                Appointments
+            </a>
+
+        </div>
 
     </nav>
 
 
-    <div class="appointments-page">
+    <main class="content-page">
 
-        <h1>Appointments</h1>
+        <div class="page-title">
 
-        <p>
-            Select a provider, review your quote,
-            and schedule your service.
-        </p>
+            <span class="blue-label">
+                YOUR SERVICES
+            </span>
 
-
-        <div class="appointment-card">
-
-            <h2>Plumbing Service</h2>
+            <h1>
+                Appointments
+            </h1>
 
             <p>
-                Provider: ABC Plumbing
+                View your upcoming and previous HomeFix services.
             </p>
-
-            <p>
-                Quote: $125
-            </p>
-
-            <div class="appointment-actions">
-
-                <button type="button">
-                    Accept Quote
-                </button>
-
-                <button type="button">
-                    Schedule Appointment
-                </button>
-
-            </div>
 
         </div>
 
 
-        <div class="appointment-card">
+        <section class="appointment-section">
 
-            <h2>Electrical Service</h2>
+            <div class="appointment-heading">
 
-            <p>
-                Provider: Reliable Electric
-            </p>
+                <h2>
+                    Upcoming
+                </h2>
 
-            <p>
-                Quote: $150
-            </p>
-
-            <div class="appointment-actions">
-
-                <button type="button">
-                    Accept Quote
-                </button>
-
-                <button type="button">
-                    Schedule Appointment
-                </button>
+                <span class="appointment-status">
+                    1 Scheduled
+                </span>
 
             </div>
 
-        </div>
 
-    </div>
+            <article class="appointment-card">
+
+                <div class="appointment-date">
+
+                    <strong>
+                        24
+                    </strong>
+
+                    <span>
+                        SEP
+                    </span>
+
+                </div>
+
+
+                <div class="appointment-details">
+
+                    <span class="blue-label">
+                        UPCOMING
+                    </span>
+
+                    <h2>
+                        Plumbing Repair
+                    </h2>
+
+                    <p>
+                        Marcus Johnson · Licensed Plumber
+                    </p>
+
+                    <p>
+                        Thursday, September 24 · 1:00 PM
+                    </p>
+
+                    <p>
+                        123 Main Street
+                    </p>
+
+                </div>
+
+
+                <div class="appointment-actions">
+
+                    <strong>
+                        $85/hr
+                    </strong>
+
+                    <a
+                        href="Provider Profile.html"
+                        class="small-button"
+                    >
+                        View Provider
+                    </a>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <section class="appointment-section">
+
+            <div class="appointment-heading">
+
+                <h2>
+                    Completed Services
+                </h2>
+
+            </div>
+
+
+            <article class="appointment-card completed">
+
+                <div class="appointment-date">
+
+                    <strong>
+                        12
+                    </strong>
+
+                    <span>
+                        SEP
+                    </span>
+
+                </div>
+
+
+                <div class="appointment-details">
+
+                    <span class="completed-label">
+                        COMPLETED
+                    </span>
+
+                    <h2>
+                        Faucet Repair
+                    </h2>
+
+                    <p>
+                        Marcus Johnson · Licensed Plumber
+                    </p>
+
+                    <p>
+                        September 12 · 10:00 AM
+                    </p>
+
+                </div>
+
+
+                <div class="appointment-actions">
+
+                    <a
+                        href="Reviews.html"
+                        class="small-button"
+                    >
+                        Leave Review
+                    </a>
+
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
 
 </body>
-
 </html>

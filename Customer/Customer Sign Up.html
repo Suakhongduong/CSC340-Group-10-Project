@@ -7,42 +7,203 @@
 
     <link rel="stylesheet" href="../style.css">
 
-    <title>Customer Sign Up</title>
+    <title>HomeFix - Sign Up</title>
 </head>
 
 <body>
 
-    <div class="signup-page">
+    <nav class="site-nav">
 
-        <div class="signup-box">
+        <a href="../index.html" class="logo">
+            HomeFix
+        </a>
 
-            <h1>Customer Sign Up</h1>
+        <div class="nav-links">
 
-            <p>Create your HomeFix account</p>
+            <a href="../index.html">
+                Home
+            </a>
 
-            <form>
-
-                <label>Full Name</label>
-                <input type="text" placeholder="Enter your name">
-
-                <label>Email</label>
-                <input type="email" placeholder="Enter your email">
-
-                <label>Password</label>
-                <input type="password" placeholder="Create a password">
-
-                <label>Confirm Password</label>
-                <input type="password" placeholder="Confirm your password">
-
-                <a href="Customer Home.html" class="signup-button">
-                    Create Account
-                </a>
-
-            </form>
+            <a href="../Get Started.html">
+                Get Started
+            </a>
 
         </div>
 
-    </div>
+    </nav>
+
+
+    <main class="auth-page">
+
+        <div class="auth-card">
+
+            <div class="auth-heading">
+
+                <span class="blue-label">
+                    GET STARTED
+                </span>
+
+                <h1>
+                    Create your HomeFix account
+                </h1>
+
+                <p>
+                    Find trusted professionals for your
+                    home repair and maintenance needs.
+                </p>
+
+            </div>
+
+
+            <form id="signup-form">
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label for="phone">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="Enter your phone number"
+                    required
+                >
+
+
+                <label for="address">
+                    Home Address
+                </label>
+
+                <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="Enter your home address"
+                    required
+                >
+
+
+                <label for="city">
+                    City
+                </label>
+
+                <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    placeholder="Enter your city"
+                    required
+                >
+
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a password"
+                    required
+                >
+
+
+                <label for="confirm-password">
+                    Confirm Password
+                </label>
+
+                <input
+                    type="password"
+                    id="confirm-password"
+                    name="confirm-password"
+                    placeholder="Confirm your password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="main-button"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <p class="form-note">
+                By creating an account, you agree to use
+                HomeFix responsibly.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        document.getElementById("signup-form").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            localStorage.setItem(
+                "fullName",
+                document.getElementById("name").value
+            );
+
+            localStorage.setItem(
+                "email",
+                document.getElementById("email").value
+            );
+
+            localStorage.setItem(
+                "phone",
+                document.getElementById("phone").value
+            );
+
+            localStorage.setItem(
+                "address",
+                document.getElementById("address").value
+            );
+
+            localStorage.setItem(
+                "city",
+                document.getElementById("city").value
+            );
+
+            window.location.href = "Customer Home.html";
+
+        });
+
+    </script>
 
 </body>
 

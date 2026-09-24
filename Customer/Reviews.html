@@ -1,92 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../style.css">
 
-    <title>Reviews</title>
+    <title>HomeFix - Leave a Review</title>
 </head>
 
 <body>
 
-    <nav>
+    <nav class="site-nav">
 
-        <a href="Customer Home.html" class="home">
+        <a href="Customer Home.html" class="logo">
             HomeFix
         </a>
 
-        <a href="Customer Home.html">
-            Home
-        </a>
+        <div class="nav-links">
 
-        <a href="Customer Profile.html">
-            Profile
-        </a>
+            <a href="Customer Home.html">
+                Home
+            </a>
+
+            <a href="Services.html">
+                Services
+            </a>
+
+            <a href="Customer Profile.html">
+                Profile
+            </a>
+
+            <a href="Appointments.html">
+                Appointments
+            </a>
+
+        </div>
 
     </nav>
 
 
-    <div class="customer-page">
+    <main class="review-page">
 
-        <div class="customer-box">
+        <div class="review-card">
 
-            <h1>Leave a Review</h1>
+            <div class="page-title">
 
-            <p>Tell us about your experience.</p>
+                <span class="blue-label">
+                    YOUR EXPERIENCE
+                </span>
+
+                <h1>
+                    Leave a Review
+                </h1>
+
+                <p>
+                    Tell other HomeFix customers about
+                    your experience.
+                </p>
+
+            </div>
+
+
+            <div class="review-provider">
+
+                <div class="provider-initials">
+                    MJ
+                </div>
+
+                <div>
+
+                    <strong>
+                        Marcus Johnson
+                    </strong>
+
+                    <p>
+                        Faucet Repair · September 12
+                    </p>
+
+                </div>
+
+            </div>
 
 
             <form>
 
-                <label>Provider</label>
+                <label>
+                    Your Rating
+                </label>
 
-                <select>
+                <div class="rating-select">
 
-                    <option>Select a provider</option>
+                    <label>
+                        <input
+                            type="radio"
+                            name="rating"
+                        >
+                        ★★★★★
+                    </label>
 
-                    <option>ABC Plumbing</option>
+                    <label>
+                        <input
+                            type="radio"
+                            name="rating"
+                        >
+                        ★★★★☆
+                    </label>
 
-                    <option>Reliable Electric</option>
+                    <label>
+                        <input
+                            type="radio"
+                            name="rating"
+                        >
+                        ★★★☆☆
+                    </label>
 
-                    <option>HomeFix Handyman</option>
-
-                </select>
-
-
-                <label>Rating</label>
-
-                <select>
-
-                    <option>Select a rating</option>
-
-                    <option>5 Stars</option>
-                    <option>4 Stars</option>
-                    <option>3 Stars</option>
-                    <option>2 Stars</option>
-                    <option>1 Star</option>
-
-                </select>
+                </div>
 
 
-                <label>Written Review</label>
+                <label>
+                    Your Review
+                </label>
 
                 <textarea
-                    placeholder="Write your review..."
+                    rows="7"
+                    placeholder="Share your experience..."
                 ></textarea>
 
 
-                <button type="button">
+                <a
+                    href="Appointments.html"
+                    class="main-button"
+                >
                     Submit Review
-                </button>
+                </a>
 
             </form>
 
         </div>
 
-    </div>
+    </main>
 
 </body>
-
 </html>

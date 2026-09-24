@@ -1,114 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../style.css">
 
-    <title>Customer Home</title>
+    <title>HomeFix - Customer Home</title>
 </head>
 
 <body>
 
-    <nav>
+    <nav class="site-nav">
 
-        <a href="Customer Home.html" class="home">
+        <a href="Customer Home.html" class="logo">
             HomeFix
         </a>
 
-        <a href="Customer Home.html">
-            Home
-        </a>
+        <div class="nav-links">
 
-        <a href="Customer Profile.html">
-            Profile
-        </a>
-
-        <a href="../index.html">
-            Logout
-        </a>
-
-    </nav>
-
-
-    <div class="customer-home">
-
-        <h1>Welcome to HomeFix!</h1>
-
-        <p>What can we help you with today?</p>
-
-
-        <div class="customer-stories">
-
-            <!-- USER STORY 1 -->
-
-            <a href="Customer Profile.html" class="customer-card">
-
-                <h2>My Profile</h2>
-
-                <p>
-                    Create and update your name,
-                    contact information, and address.
-                </p>
-
-                <span>View Profile →</span>
-
+            <a href="Customer Home.html" class="active">
+                Home
             </a>
 
-
-            <!-- USER STORY 2 -->
-
-            <a href="Services.html" class="customer-card">
-
-                <h2>Find a Service</h2>
-
-                <p>
-                    Search or browse available home
-                    maintenance and repair services.
-                </p>
-
-                <span>Find Services →</span>
-
+            <a href="Services.html">
+                Services
             </a>
 
-
-            <!-- USER STORY 3 -->
-
-            <a href="Reviews.html" class="customer-card">
-
-                <h2>Leave a Review</h2>
-
-                <p>
-                    Rate your service and leave a
-                    written review for your provider.
-                </p>
-
-                <span>Write a Review →</span>
-
+            <a href="Customer Profile.html">
+                Profile
             </a>
 
+            <a href="Appointments.html">
+                Appointments
+            </a>
 
-            <!-- USER STORY 4 -->
-
-            <a href="Appointments.html" class="customer-card">
-
-                <h2>Appointments</h2>
-
-                <p>
-                    Select a provider, accept a quote,
-                    and schedule an appointment.
-                </p>
-
-                <span>View Appointments →</span>
-
+            <a href="../index.html">
+                Logout
             </a>
 
         </div>
 
-    </div>
+    </nav>
+
+
+    <main class="customer-dashboard">
+
+        <section class="dashboard-hero">
+
+            <div class="hero-text">
+
+                <span class="blue-label">
+                    CUSTOMER DASHBOARD
+                </span>
+
+                <h1>
+                    Take care of your home
+                    with confidence.
+                </h1>
+
+                <p>
+                    Find qualified professionals for repairs,
+                    maintenance, and projects around your home.
+                </p>
+
+                <a
+                    href="Services.html"
+                    class="main-button"
+                >
+                    Find a Service
+                </a>
+
+            </div>
+
+
+            <div class="hero-box">
+
+                <span class="hero-icon">
+                    🏠
+                </span>
+
+                <h3>
+                    What needs fixing?
+                </h3>
+
+                <p>
+                    Browse local home services and connect
+                    with a professional.
+                </p>
+
+                <a href="Services.html">
+                    Browse Services →
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <section class="dashboard-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="blue-label">
+                        QUICK ACCESS
+                    </span>
+
+                    <h2>
+                        What would you like to do?
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <a
+                    href="Services.html"
+                    class="dashboard-card"
+                >
+
+                    <h3>
+                        Find a Service
+                    </h3>
+
+                    <p>
+                        Search for plumbing, electrical,
+                        handyman, and other home services.
+                    </p>
+
+                    <span>
+                        Browse services →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="Customer Profile.html"
+                    class="dashboard-card"
+                >
+
+                    <h3>
+                        My Profile
+                    </h3>
+
+                    <p>
+                        View and update your personal
+                        information and home address.
+                    </p>
+
+                    <span>
+                        View profile →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="Appointments.html"
+                    class="dashboard-card"
+                >
+
+                    <h3>
+                        Appointments
+                    </h3>
+
+                    <p>
+                        See your scheduled home services
+                        and upcoming appointments.
+                    </p>
+
+                    <span>
+                        View appointments →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="Reviews.html"
+                    class="dashboard-card"
+                >
+
+                    <h3>
+                        Reviews
+                    </h3>
+
+                    <p>
+                        Leave feedback after a completed
+                        service.
+                    </p>
+
+                    <span>
+                        Leave a review →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <section class="help-banner">
+
+            <div>
+
+                <span class="blue-label">
+                    HOMEFIX
+                </span>
+
+                <h2>
+                    Have a home project in mind?
+                </h2>
+
+                <p>
+                    Explore available professionals and
+                    find someone who can help.
+                </p>
+
+            </div>
+
+            <a
+                href="Services.html"
+                class="outline-button"
+            >
+                Explore Services
+            </a>
+
+        </section>
+
+    </main>
 
 </body>
-
 </html>
