@@ -17,12 +17,12 @@ nav {
     width: 100%;
     height: 80px;
 
-    background-color: blueviolet;
+    background-color: #2563eb;
 }
 
 nav a {
     background-color: white;
-    color: blueviolet;
+    color: #2563eb;
 
     padding: 10px 20px;
 
@@ -123,7 +123,7 @@ nav .register {
 
     padding: 12px 25px;
 
-    background-color: blueviolet;
+    background-color: #2563eb;
     color: white;
 
     border-radius: 20px;
@@ -149,7 +149,7 @@ nav .register {
 
     padding: 20px;
 
-    background-color: rgb(175, 222, 57);
+    background-color: rgb(201, 213, 241);
 
     border-radius: 20px;
 
@@ -445,396 +445,1452 @@ nav .register {
     transform: scale(1.05);
 }
 
-/* CUSTOMER SIGN UP */
+/* =========================================
+   HOMEFIX CUSTOMER PROTOTYPE
+   ========================================= */
 
-.signup-page {
-    min-height: 100vh;
+:root {
+    --homefix-blue: #2563eb;
+    --homefix-dark-blue: #17324d;
+    --homefix-navy: #102a43;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    --homefix-text: #263238;
+    --homefix-gray: #667085;
+    --homefix-light: #f5f7fa;
+    --homefix-border: #dfe4ea;
 
-    background-color: white;
+    --homefix-white: #ffffff;
 }
 
-.signup-box {
-    width: 450px;
 
-    padding: 40px;
+/* =========================
+   NAVIGATION
+   ========================= */
 
-    background-color: rgb(230, 190, 240);
+.site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    border-radius: 20px;
+    padding: 18px 7%;
+
+    background: var(--homefix-white);
+
+    border-bottom: 1px solid var(--homefix-border);
+}
+
+
+.logo {
+    color: var(--homefix-navy);
+
+    font-size: 25px;
+    font-weight: 800;
+
+    text-decoration: none;
+}
+
+
+.nav-links {
+    display: flex;
+    align-items: center;
+
+    gap: 26px;
+}
+
+
+.nav-links a {
+    color: var(--homefix-text);
+
+    text-decoration: none;
+
+    font-size: 15px;
+}
+
+
+.nav-links a:hover,
+.nav-links .active {
+    color: var(--homefix-blue);
+}
+
+
+/* =========================
+   GENERAL BUTTONS
+   ========================= */
+
+.main-button {
+    display: inline-block;
+
+    padding: 13px 22px;
+
+    background: var(--homefix-blue);
+
+    color: white;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    border: none;
+
+    cursor: pointer;
 
     box-sizing: border-box;
 }
 
-.signup-box h1 {
-    margin-top: 0;
+
+.main-button:hover {
+    background: #1d4ed8;
+}
+
+
+.outline-button {
+    display: inline-block;
+
+    padding: 12px 20px;
+
+    color: white;
+
+    border: 1px solid white;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+
+.small-button {
+    display: inline-block;
+
+    padding: 9px 14px;
+
+    color: var(--homefix-blue);
+
+    background: #edf4ff;
+
+    border-radius: 6px;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   BLUE LABEL
+   ========================= */
+
+.blue-label {
+    color: var(--homefix-blue);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+}
+
+
+/* =========================
+   SIGN UP
+   ========================= */
+
+.auth-page {
+    min-height: 85vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 50px 20px;
+
+    background: var(--homefix-light);
+}
+
+
+.auth-card {
+    width: 100%;
+
+    max-width: 480px;
+
+    padding: 40px;
+
+    background: white;
+
+    border: 1px solid var(--homefix-border);
+
+    border-radius: 12px;
+
+    box-sizing: border-box;
+}
+
+
+.auth-heading {
+    margin-bottom: 30px;
+}
+
+
+.auth-heading h1 {
+    color: var(--homefix-navy);
+
+    font-size: 30px;
+
+    margin: 8px 0 12px;
+}
+
+
+.auth-heading p {
+    color: var(--homefix-gray);
+
+    line-height: 1.6;
+}
+
+
+.auth-card form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+
+.auth-card label,
+.content-page label,
+.booking-card label,
+.review-card label {
+    color: var(--homefix-text);
+
+    font-weight: 600;
+
+    font-size: 14px;
+}
+
+
+.auth-card input,
+.profile-main input,
+.service-search input,
+.service-search select,
+.filter-bar select,
+.booking-card input,
+.booking-card select,
+.booking-card textarea,
+.review-card textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    box-sizing: border-box;
+
+    border: 1px solid var(--homefix-border);
+
+    border-radius: 6px;
+
+    font-size: 15px;
+
+    background: white;
+}
+
+
+.auth-card input {
+    margin-bottom: 12px;
+}
+
+
+.form-note {
+    color: var(--homefix-gray);
+
+    font-size: 13px;
+
+    line-height: 1.5;
 
     text-align: center;
 
-    color: blueviolet;
+    margin-top: 22px;
+}
 
+
+/* =========================
+   CUSTOMER HOME
+   ========================= */
+
+.customer-dashboard {
+    width: 86%;
+
+    max-width: 1200px;
+
+    margin: 45px auto;
+}
+
+
+.dashboard-hero {
+    display: grid;
+
+    grid-template-columns: 1.7fr 1fr;
+
+    gap: 35px;
+
+    padding: 50px;
+
+    background: #eef5fb;
+
+    border-radius: 15px;
+}
+
+
+.hero-text h1 {
+    max-width: 650px;
+
+    color: var(--homefix-navy);
+
+    font-size: 43px;
+
+    line-height: 1.1;
+
+    margin: 12px 0 18px;
+}
+
+
+.hero-text p {
+    max-width: 600px;
+
+    color: var(--homefix-gray);
+
+    line-height: 1.7;
+
+    margin-bottom: 28px;
+}
+
+
+.hero-box {
+    padding: 30px;
+
+    background: var(--homefix-navy);
+
+    color: white;
+
+    border-radius: 12px;
+
+    align-self: center;
+}
+
+
+.hero-icon {
     font-size: 35px;
 }
 
-.signup-box > p {
+
+.hero-box h3 {
+    font-size: 22px;
+
+    margin-bottom: 10px;
+}
+
+
+.hero-box p {
+    color: #d9e3ec;
+
+    line-height: 1.6;
+}
+
+
+.hero-box a {
+    color: #9ec5ff;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+.dashboard-section {
+    margin-top: 55px;
+}
+
+
+.section-heading h2 {
+    color: var(--homefix-navy);
+
+    font-size: 30px;
+
+    margin-top: 8px;
+}
+
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+
+.dashboard-card {
+    padding: 25px;
+
+    background: white;
+
+    border: 1px solid var(--homefix-border);
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+
+.dashboard-card:hover {
+    border-color: var(--homefix-blue);
+
+    transform: translateY(-3px);
+}
+
+
+.dashboard-card h3 {
+    color: var(--homefix-navy);
+}
+
+
+.dashboard-card p {
+    color: var(--homefix-gray);
+
+    line-height: 1.6;
+
+    min-height: 75px;
+}
+
+
+.dashboard-card span {
+    color: var(--homefix-blue);
+
+    font-weight: 700;
+
+    font-size: 14px;
+}
+
+
+.card-icon {
+    font-size: 27px;
+
+    margin-bottom: 12px;
+}
+
+
+.help-banner {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 25px;
+
+    margin-top: 50px;
+
+    padding: 35px;
+
+    background: var(--homefix-navy);
+
+    border-radius: 12px;
+
+    color: white;
+}
+
+
+.help-banner h2 {
+    margin: 7px 0;
+
+    font-size: 27px;
+}
+
+
+.help-banner p {
+    color: #d9e3ec;
+}
+
+
+/* =========================
+   GENERAL CONTENT
+   ========================= */
+
+.content-page {
+    width: 86%;
+
+    max-width: 1200px;
+
+    margin: 45px auto;
+}
+
+
+.page-title {
+    margin-bottom: 35px;
+}
+
+
+.page-title h1 {
+    color: var(--homefix-navy);
+
+    font-size: 37px;
+
+    margin: 8px 0 10px;
+}
+
+
+.page-title p {
+    color: var(--homefix-gray);
+
+    line-height: 1.6;
+}
+
+
+.section-description {
+    color: var(--homefix-gray);
+}
+
+
+/* =========================
+   PROFILE
+   ========================= */
+
+.profile-layout {
+    display: grid;
+
+    grid-template-columns: 280px 1fr;
+
+    gap: 25px;
+}
+
+
+.profile-side,
+.profile-main,
+.simple-section {
+    background: white;
+
+    border: 1px solid var(--homefix-border);
+
+    border-radius: 12px;
+
+    padding: 30px;
+}
+
+
+.profile-side {
     text-align: center;
 
-    color: #444;
+    height: fit-content;
+}
+
+
+.profile-circle {
+    width: 90px;
+
+    height: 90px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin: 0 auto 20px;
+
+    background: #dceaff;
+
+    color: var(--homefix-blue);
+
+    border-radius: 50%;
+
+    font-size: 25px;
+
+    font-weight: 800;
+}
+
+
+.profile-side h2 {
+    color: var(--homefix-navy);
+}
+
+
+.profile-side p {
+    color: var(--homefix-gray);
+}
+
+
+.profile-side a {
+    color: var(--homefix-blue);
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+
+.profile-main h2,
+.simple-section h2 {
+    color: var(--homefix-navy);
+}
+
+
+.profile-main form {
+    margin-top: 25px;
+}
+
+
+.two-column {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+}
+
+
+.profile-main label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    margin-top: 15px;
+}
+
+
+.profile-main input {
+    margin-bottom: 5px;
+}
+
+
+.simple-section {
+    margin-top: 25px;
+}
+
+
+.settings-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid var(--homefix-border);
+}
+
+
+.settings-row:last-child {
+    border-bottom: none;
+}
+
+
+.settings-row h3 {
+    color: var(--homefix-text);
+
+    margin-bottom: 5px;
+}
+
+
+.settings-row p {
+    color: var(--homefix-gray);
+
+    margin: 0;
+}
+
+
+/* =========================
+   SERVICES
+   ========================= */
+
+.service-search {
+    display: grid;
+
+    grid-template-columns: 1fr 220px;
+
+    gap: 15px;
 
     margin-bottom: 30px;
 }
 
-.signup-box form {
+
+.service-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+
+.service-card {
+    padding: 30px;
+
+    background: white;
+
+    border: 1px solid var(--homefix-border);
+
+    border-radius: 12px;
+
+    transition: 0.2s;
+}
+
+
+.service-card:hover {
+    border-color: var(--homefix-blue);
+
+    box-shadow:
+        0 8px 20px rgba(20, 50, 80, 0.08);
+}
+
+
+.large-icon {
+    font-size: 35px;
+
+    margin-bottom: 15px;
+}
+
+
+.service-card h2 {
+    color: var(--homefix-navy);
+}
+
+
+.service-card p {
+    color: var(--homefix-gray);
+
+    line-height: 1.7;
+
+    min-height: 80px;
+}
+
+
+.card-link {
+    color: var(--homefix-blue);
+
+    text-decoration: none;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   PROVIDERS
+   ========================= */
+
+.filter-bar {
     display: flex;
-    flex-direction: column;
+
+    gap: 12px;
+
+    margin-bottom: 30px;
 }
 
-.signup-box label {
-    margin-bottom: 5px;
 
-    color: #333;
+.filter-bar select {
+    width: auto;
 
-    font-weight: bold;
+    min-width: 170px;
 }
 
-.signup-box input {
-    padding: 12px;
 
-    margin-bottom: 20px;
+.provider-grid {
+    display: grid;
 
-    border: 2px solid white;
+    grid-template-columns:
+        repeat(2, 1fr);
 
-    border-radius: 10px;
-
-    font-size: 16px;
-
-    box-sizing: border-box;
+    gap: 20px;
 }
 
-.signup-box button {
-    padding: 13px;
 
-    background-color: blueviolet;
+.provider-card {
+    padding: 27px;
+
+    background: white;
+
+    border: 1px solid var(--homefix-border);
+
+    border-radius: 12px;
+}
+
+
+.provider-top {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.provider-initials,
+.large-provider-initials {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-shrink: 0;
+
+    background: var(--homefix-dark-blue);
 
     color: white;
 
-    border: none;
+    border-radius: 50%;
 
-    border-radius: 10px;
+    font-weight: 800;
+}
 
-    font-size: 16px;
 
-    font-weight: bold;
+.provider-initials {
+    width: 58px;
+
+    height: 58px;
+}
+
+
+.provider-card h2 {
+    color: var(--homefix-navy);
+
+    margin: 0 0 5px;
+}
+
+
+.provider-card p {
+    color: var(--homefix-gray);
+
+    line-height: 1.6;
+}
+
+
+.provider-rating,
+.rating-large {
+    color: #c27c00;
+
+    font-weight: 700;
+
+    margin: 18px 0;
+}
+
+
+.provider-rating span,
+.rating-large span {
+    color: var(--homefix-gray);
+
+    font-weight: 400;
+
+    margin-left: 7px;
+}
+
+
+.tags,
+.service-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin: 20px 0;
+}
+
+
+.tags span,
+.service-list span {
+    padding: 6px 10px;
+
+    background: #eef5fb;
+
+    color: var(--homefix-dark-blue);
+
+    border-radius: 20px;
+
+    font-size: 13px;
+}
+
+
+.provider-bottom {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-top: 1px solid var(--homefix-border);
+
+    padding-top: 20px;
+
+    margin-top: 20px;
+}
+
+
+.provider-bottom strong {
+    color: var(--homefix-navy);
+}
+
+
+/* =========================
+   PROVIDER PROFILE
+   ========================= */
+
+.provider-profile-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 35px;
+
+    background: #eef5fb;
+
+    border-radius: 14px;
+}
+
+
+.large-provider-initials {
+    width: 105px;
+
+    height: 105px;
+
+    font-size: 32px;
+}
+
+
+.provider-heading h1 {
+    color: var(--homefix-navy);
+
+    font-size: 38px;
+
+    margin: 8px 0;
+}
+
+
+.provider-heading p {
+    color: var(--homefix-gray);
+
+    margin: 0;
+}
+
+
+.profile-content {
+    display: grid;
+
+    grid-template-columns: 1fr 310px;
+
+    gap: 25px;
+
+    margin-top: 25px;
+}
+
+
+.information-card {
+    padding: 28px;
+
+    background: white;
+
+    border: 1px solid var(--homefix-border);
+
+    border-radius: 12px;
+
+    margin-bottom: 20px;
+}
+
+
+.information-card h2 {
+    color: var(--homefix-navy);
+}
+
+
+.information-card p,
+.information-card li {
+    color: var(--homefix-gray);
+
+    line-height: 1.7;
+}
+
+
+.information-card li {
+    margin-bottom: 8px;
+}
+
+
+.customer-review {
+    padding: 18px;
+
+    background: var(--homefix-light);
+
+    border-radius: 8px;
+
+    margin-top: 12px;
+}
+
+
+.customer-review div {
+    color: #c27c00;
+}
+
+
+.customer-review p {
+    color: var(--homefix-text);
+}
+
+
+.customer-review small {
+    color: var(--homefix-gray);
+}
+
+
+.quote-box {
+    height: fit-content;
+
+    padding: 28px;
+
+    background: var(--homefix-navy);
+
+    color: white;
+
+    border-radius: 12px;
+}
+
+
+.quote-box h2 {
+    font-size: 25px;
+}
+
+
+.quote-box p {
+    color: #d9e3ec;
+
+    line-height: 1.6;
+}
+
+
+.price {
+    padding: 20px 0;
+
+    margin: 20px 0;
+
+    border-top: 1px solid #40576d;
+
+    border-bottom: 1px solid #40576d;
+}
+
+
+.price strong {
+    display: block;
+
+    font-size: 27px;
+
+    margin-top: 5px;
+}
+
+
+.full-width {
+    width: 100%;
+
+    text-align: center;
+}
+
+
+.back-link {
+    display: block;
+
+    margin-top: 20px;
+
+    color: #b9d5ff;
+
+    text-align: center;
+
+    text-decoration: none;
+}
+
+
+/* =========================
+   BOOKING
+   ========================= */
+
+.booking-page,
+.review-page {
+    width: 86%;
+
+    max-width: 760px;
+
+    margin: 45px auto;
+}
+
+
+.booking-card,
+.review-card {
+    padding: 40px;
+
+    background: white;
+
+    border: 1px solid var(--homefix-border);
+
+    border-radius: 12px;
+}
+
+
+.booking-card form,
+.review-card form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.selected-provider,
+.review-provider {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 18px;
+
+    margin-bottom: 25px;
+
+    background: var(--homefix-light);
+
+    border-radius: 9px;
+}
+
+
+.selected-provider p,
+.review-provider p {
+    color: var(--homefix-gray);
+
+    margin: 5px 0 0;
+}
+
+
+.booking-card textarea {
+    resize: vertical;
+
+    margin-bottom: 12px;
+}
+
+
+.quote-summary {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 18px;
+
+    margin: 10px 0 20px;
+
+    background: #eef5fb;
+
+    border-radius: 8px;
+}
+
+
+.quote-summary span {
+    color: var(--homefix-gray);
+}
+
+
+.quote-summary strong {
+    color: var(--homefix-navy);
+
+    font-size: 20px;
+}
+
+
+/* =========================
+   APPOINTMENTS
+   ========================= */
+
+.appointment-section {
+    margin-bottom: 45px;
+}
+
+
+.appointment-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+
+.appointment-heading h2 {
+    color: var(--homefix-navy);
+}
+
+
+.appointment-status {
+    padding: 6px 12px;
+
+    background: #e8f1ff;
+
+    color: var(--homefix-blue);
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.appointment-card {
+    display: grid;
+
+    grid-template-columns: 90px 1fr auto;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 25px;
+
+    background: white;
+
+    border: 1px solid var(--homefix-border);
+
+    border-radius: 12px;
+}
+
+
+.appointment-date {
+    text-align: center;
+
+    padding: 15px;
+
+    background: #eef5fb;
+
+    border-radius: 8px;
+}
+
+
+.appointment-date strong {
+    display: block;
+
+    color: var(--homefix-navy);
+
+    font-size: 28px;
+}
+
+
+.appointment-date span {
+    color: var(--homefix-blue);
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+.appointment-details h2 {
+    color: var(--homefix-navy);
+}
+
+
+.appointment-details p {
+    color: var(--homefix-gray);
+}
+
+
+.appointment-actions {
+    text-align: right;
+}
+
+
+.appointment-actions strong {
+    display: block;
+
+    color: var(--homefix-navy);
+
+    margin-bottom: 15px;
+}
+
+
+.completed-label {
+    color: #32805a;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   REVIEWS
+   ========================= */
+
+.rating-select {
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin: 5px 0 20px;
+}
+
+
+.rating-select label {
+    padding: 10px 15px;
+
+    background: var(--homefix-light);
+
+    border: 1px solid var(--homefix-border);
+
+    border-radius: 6px;
 
     cursor: pointer;
 }
 
-.signup-box button:hover {
-    transform: translateY(-2px);
+
+.review-card textarea {
+    resize: vertical;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 900px) {
+
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .profile-layout,
+    .profile-content {
+        grid-template-columns: 1fr;
+    }
+
+
+    .provider-grid,
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .dashboard-hero {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .site-nav {
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+
+    .nav-links {
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .two-column {
+        grid-template-columns: 1fr;
+    }
+
+
+    .service-search {
+        grid-template-columns: 1fr;
+    }
+
+
+    .filter-bar {
+        flex-direction: column;
+    }
+
+
+    .filter-bar select {
+        width: 100%;
+    }
+
+
+    .provider-profile-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .appointment-card {
+        grid-template-columns: 1fr;
+    }
+
+
+    .appointment-actions {
+        text-align: left;
+    }
+
+
+    .help-banner {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
 }
 
 /* =================================
-   CUSTOMER HOME
-================================= */
-
-.customer-home {
-    width: 90%;
-    margin: 50px auto;
-    text-align: center;
-}
-
-.customer-home h1 {
-    font-size: 45px;
-    color: #222;
-    margin-bottom: 10px;
-}
-
-.customer-home > p {
-    font-size: 20px;
-    color: #555;
-    margin-bottom: 40px;
-}
-
-
-.customer-stories {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-}
-
-
-.customer-card {
-    padding: 35px;
-    background-color: rgb(230, 190, 240);
-    border-radius: 20px;
-    text-align: left;
-    text-decoration: none;
-    color: #222;
-    transition: transform 0.2s;
-}
-
-
-.customer-card:hover {
-    transform: translateY(-5px);
-}
-
-
-.customer-card h2 {
-    margin-top: 0;
-    color: blueviolet;
-    font-size: 28px;
-}
-
-
-.customer-card p {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #444;
-}
-
-
-.customer-card span {
-    display: inline-block;
-    margin-top: 15px;
-    color: blueviolet;
-    font-weight: bold;
-}
-
-
-/* =================================
-   SIGN UP
-================================= */
-
-.signup-page {
-    min-height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.signup-box {
-    width: 450px;
-
-    padding: 40px;
-
-    background-color: rgb(230, 190, 240);
-
-    border-radius: 20px;
-
-    box-sizing: border-box;
-}
-
-
-.signup-box h1 {
-    text-align: center;
-
-    color: blueviolet;
-
-    font-size: 35px;
-}
-
-
-.signup-box > p {
-    text-align: center;
-
-    color: #444;
-
-    margin-bottom: 30px;
-}
-
-
-.signup-box form {
-    display: flex;
-    flex-direction: column;
-}
-
-
-.signup-box label {
-    margin-bottom: 5px;
-
-    color: #333;
-
-    font-weight: bold;
-}
-
-
-.signup-box input {
-    padding: 12px;
-
-    margin-bottom: 20px;
-
-    border: 2px solid white;
-
-    border-radius: 10px;
-
-    font-size: 16px;
-
-    box-sizing: border-box;
-}
-
-
-.signup-button {
-    display: block;
-
-    padding: 13px;
-
-    background-color: blueviolet;
-
-    color: white;
-
-    border-radius: 10px;
-
-    text-align: center;
-
-    text-decoration: none;
-
-    font-size: 16px;
-
-    font-weight: bold;
-}
-
-
-/* CUSTOMER HOME */
-
-.customer-home {
-    width: 90%;
-    margin: 50px auto;
-    text-align: center;
-}
-
-.customer-home h1 {
-    font-size: 45px;
-    color: #222;
-    margin-bottom: 10px;
-}
-
-.customer-home > p {
-    font-size: 20px;
-    color: #555;
-    margin-bottom: 40px;
-}
-
-.customer-stories {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-}
-
-.customer-card {
-    padding: 35px;
-    background-color: rgb(230, 190, 240);
-    border-radius: 20px;
-    text-align: left;
-    text-decoration: none;
-    color: #222;
-    transition: transform 0.2s;
-}
-
-.customer-card:hover {
-    transform: translateY(-5px);
-}
-
-.customer-card h2 {
-    margin-top: 0;
-    color: blueviolet;
-    font-size: 28px;
-}
-
-.customer-card p {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #444;
-}
-
-.customer-card span {
-    display: inline-block;
-    margin-top: 15px;
-    color: blueviolet;
-    font-weight: bold;
-}
-
-
-/* SIGN UP */
-
-.signup-page {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.signup-box {
-    width: 450px;
-    padding: 40px;
-    background-color: rgb(230, 190, 240);
-    border-radius: 20px;
-    box-sizing: border-box;
-}
-
-.signup-box h1 {
-    text-align: center;
-    color: blueviolet;
-    font-size: 35px;
-}
-
-.signup-box > p {
-    text-align: center;
-    color: #444;
-    margin-bottom: 30px;
-}
-
-.signup-box form {
-    display: flex;
-    flex-direction: column;
-}
-
-.signup-box label {
-    margin-bottom: 5px;
-    color: #333;
-    font-weight: bold;
-}
-
-.signup-box input {
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 2px solid white;
-    border-radius: 10px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-
-.signup-button {
-    display: block;
-    padding: 13px;
-    background-color: blueviolet;
-    color: white;
-    border-radius: 10px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-/* HOW IT WORKS */
+   HOW IT WORKS
+   ================================= */
 
 .how-it-works {
     width: 90%;
     margin: 60px auto 0 auto;
     padding: 40px;
-    background-color: rgb(240, 240, 250);
+
+    background-color: #eaf3ff;
+
     box-sizing: border-box;
     text-align: center;
+
+    border-radius: 20px;
 }
 
 .how-it-works h2 {
     margin-top: 0;
+    margin-bottom: 15px;
+
     font-size: 40px;
-    color: #222;
+    color: #17324d;
 }
 
 .steps {
@@ -846,22 +1902,35 @@ nav .register {
 .step {
     flex: 1;
     padding: 30px;
+
     background-color: white;
+
     border-radius: 15px;
+
     text-align: left;
+
     box-sizing: border-box;
+
+    border: 1px solid #dfe4ea;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .step-number {
     display: block;
+
     font-size: 40px;
-    color: blueviolet;
+
+    color: #2563eb;
+
     margin-bottom: 20px;
+
+    font-weight: bold;
 }
 
 .step h3 {
     font-size: 24px;
-    color: #222;
+    color: #17324d;
 }
 
 .step p {
@@ -869,19 +1938,16 @@ nav .register {
     line-height: 1.5;
 }
 
-
-/* CUSTOMER / PROVIDER */
-
-/* CUSTOMER / PROVIDER */
+/* =================================
+   CUSTOMER / PROVIDER SECTION
+   ================================= */
 
 .choose-account {
     width: 90%;
     margin: 0 auto;
     padding: 45px;
-
-    background-color: #222;
+    background-color: #17324d;
     color: white;
-
     box-sizing: border-box;
     text-align: center;
 }
@@ -889,16 +1955,16 @@ nav .register {
 .choose-account h2 {
     margin-top: 0;
     margin-bottom: 15px;
-
     font-size: 32px;
 }
 
 .choose-account > p {
     margin-bottom: 35px;
+    color: #e5e7eb;
 }
 
 
-/* CUSTOMER AND PROVIDER CARDS */
+/* CUSTOMER AND PROVIDER BOXES */
 
 .account-choices {
     display: flex;
@@ -908,62 +1974,52 @@ nav .register {
 
 .account-choice {
     flex: 1;
-
     min-width: 0;
-
     padding: 30px;
-
     background-color: white;
-
     border-radius: 15px;
-
     color: #222;
-
     text-decoration: none;
-
     text-align: left;
-
     box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .account-choice h3 {
     margin-top: 0;
     margin-bottom: 15px;
-
-    color: blueviolet;
-
+    color: #2563eb;
     font-size: 28px;
 }
 
 .account-choice p {
     color: #444;
-
     line-height: 1.5;
-
     margin-bottom: 15px;
 }
 
 .account-choice span {
     display: inline-block;
-
     margin-top: 10px;
-
-    color: blueviolet;
-
+    color: #2563eb;
     font-weight: bold;
 }
 
 .account-choice:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* FOOTER */
+
+/* =================================
+   FOOTER
+   ================================= */
 
 footer {
     width: 90%;
     margin: 55px auto 0 auto;
     padding: 25px;
-    background-color: #222;
+    background-color: #102a43;
     color: white;
     box-sizing: border-box;
     text-align: center;
@@ -972,167 +2028,4 @@ footer {
 footer p {
     margin: 5px;
     font-size: 14px;
-}
-
-
-/* CUSTOMER PROFILE / REVIEW */
-
-.customer-page {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.customer-box {
-    width: 500px;
-    padding: 40px;
-    background-color: rgb(230, 190, 240);
-    border-radius: 20px;
-    box-sizing: border-box;
-}
-
-.customer-box h1 {
-    text-align: center;
-    color: blueviolet;
-}
-
-.customer-box > p {
-    text-align: center;
-    color: #555;
-    margin-bottom: 30px;
-}
-
-.customer-box form {
-    display: flex;
-    flex-direction: column;
-}
-
-.customer-box label {
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.customer-box input,
-.customer-box select,
-.customer-box textarea {
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 2px solid white;
-    border-radius: 10px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-
-.customer-box textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-
-/* BUTTONS */
-
-.customer-box button,
-.service-option button,
-.appointment-actions button,
-.service-search button {
-    padding: 12px 20px;
-    background-color: blueviolet;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-
-/* SERVICES */
-
-.services-page {
-    width: 90%;
-    margin: 50px auto;
-    text-align: center;
-}
-
-.services-page h1 {
-    font-size: 40px;
-    color: #222;
-}
-
-.services-page > p {
-    color: #555;
-    font-size: 18px;
-}
-
-.service-search {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 30px 0;
-}
-
-.service-search input {
-    width: 400px;
-    padding: 13px;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    font-size: 16px;
-}
-
-.service-options {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
-    text-align: left;
-}
-
-.service-option {
-    padding: 30px;
-    background-color: rgb(230, 190, 240);
-    border-radius: 20px;
-}
-
-.service-option h2 {
-    color: blueviolet;
-}
-
-.service-option p {
-    color: #444;
-    line-height: 1.5;
-}
-
-
-/* APPOINTMENTS */
-
-.appointments-page {
-    width: 80%;
-    margin: 50px auto;
-    text-align: center;
-}
-
-.appointments-page h1 {
-    font-size: 40px;
-}
-
-.appointment-card {
-    margin: 25px auto;
-    padding: 30px;
-    max-width: 700px;
-    background-color: rgb(230, 190, 240);
-    border-radius: 20px;
-    text-align: left;
-}
-
-.appointment-card h2 {
-    color: blueviolet;
-}
-
-.appointment-card p {
-    color: #444;
-}
-
-.appointment-actions {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
 }

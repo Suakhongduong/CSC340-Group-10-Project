@@ -7,75 +7,138 @@
 
     <link rel="stylesheet" href="../style.css">
 
-    <title>Customer Profile</title>
+    <title>HomeFix - Customer Profile</title>
 </head>
 
 <body>
 
-    <nav>
+    <nav class="site-nav">
 
-        <a href="Customer Home.html" class="home">
+        <a href="Customer Home.html" class="logo">
             HomeFix
         </a>
 
-        <a href="Customer Home.html">
-            Home
-        </a>
+        <div class="nav-links">
 
-        <a href="Customer Profile.html">
-            Profile
-        </a>
+            <a href="Customer Home.html">
+                Home
+            </a>
+
+            <a href="Services.html">
+                Services
+            </a>
+
+            <a href="Customer Profile.html" class="active">
+                Profile
+            </a>
+
+            <a href="Appointments.html">
+                Appointments
+            </a>
+
+            <a href="../index.html">
+                Logout
+            </a>
+
+        </div>
 
     </nav>
 
 
-    <div class="customer-page">
+    <main class="customer-page">
 
         <div class="customer-box">
 
-            <h1>My Profile</h1>
+            <span class="blue-label">
+                MY PROFILE
+            </span>
 
-            <p>Update your account information.</p>
+            <h1>
+                Customer Profile
+            </h1>
 
-            <form>
+            <p>
+                Your HomeFix account information.
+            </p>
 
-                <label>Full Name</label>
 
-                <input
-                    type="text"
-                    placeholder="Enter your full name"
-                >
+            <label for="profile-name">
+                Full Name
+            </label>
 
-                <label>Phone Number</label>
+            <input
+                type="text"
+                id="profile-name"
+                readonly
+            >
 
-                <input
-                    type="tel"
-                    placeholder="Enter your phone number"
-                >
 
-                <label>Email</label>
+            <label for="profile-email">
+                Email
+            </label>
 
-                <input
-                    type="email"
-                    placeholder="Enter your email"
-                >
+            <input
+                type="email"
+                id="profile-email"
+                readonly
+            >
 
-                <label>Address</label>
 
-                <input
-                    type="text"
-                    placeholder="Enter your address"
-                >
+            <label for="profile-phone">
+                Phone Number
+            </label>
 
-                <button type="button">
-                    Save Changes
-                </button>
+            <input
+                type="tel"
+                id="profile-phone"
+                readonly
+            >
 
-            </form>
+
+            <label for="profile-address">
+                Home Address
+            </label>
+
+            <input
+                type="text"
+                id="profile-address"
+                readonly
+            >
+
+
+            <label for="profile-city">
+                City
+            </label>
+
+            <input
+                type="text"
+                id="profile-city"
+                readonly
+            >
 
         </div>
 
-    </div>
+    </main>
+
+
+    <script>
+
+        document.getElementById("profile-name").value =
+            localStorage.getItem("fullName") || "Not entered";
+
+        document.getElementById("profile-email").value =
+            localStorage.getItem("email") || "Not entered";
+
+        document.getElementById("profile-phone").value =
+            localStorage.getItem("phone") || "Not entered";
+
+        document.getElementById("profile-address").value =
+            localStorage.getItem("address") || "Not entered";
+
+        document.getElementById("profile-city").value =
+            localStorage.getItem("city") || "Not entered";
+
+    </script>
 
 </body>
 
