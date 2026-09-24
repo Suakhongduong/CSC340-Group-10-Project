@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>HomeFix - Provider Dashboard</title>
+    <style>
+        .dashboard-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 24px;
+            margin-bottom: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        .btn-action {
+            background-color: blueviolet;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .service-box {
+            border: 1px solid #e0e0e0;
+            padding: 16px;
+            border-radius: 8px;
+            background: #fdfdfd;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <span style="font-weight: bold; font-size: 18px;">HomeFix Provider Portal</span>
+        <a href="../index.html" class="Login">Logout</a>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- 1. Profile Management -->
+        <div class="card">
+            <h3>1. Provider Profile Settings</h3>
+            <form onsubmit="alert('Profile updated successfully!'); return false;">
+                <div class="form-group">
+                    <label>Business Name</label>
+                    <input type="text" value="Khanh Repairs & Electrical">
+                </div>
+                <div class="form-group">
+                    <label>Specialty</label>
+                    <select>
+                        <option selected>Electrical</option>
+                        <option>Plumbing</option>
+                        <option>Handyman</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Bio / Description</label>
+                    <textarea rows="2">Licensed electrician with over 8 years of residential maintenance experience.</textarea>
+                </div>
+                <button type="submit" class="btn-action">Update Profile</button>
+            </form>
+        </div>
+
+        <!-- 2. Create Service Listing -->
+        <div class="card">
+            <h3>2. Post a New Repair Service</h3>
+            <form onsubmit="alert('Service published successfully!'); return false;">
+                <div class="form-group">
+                    <label>Service Title</label>
+                    <input type="text" placeholder="e.g. Electrical Outlet & Panel Repair" required>
+                </div>
+                <div class="form-group">
+                    <label>Price Rate ($/hr or Fixed)</label>
+                    <input type="text" placeholder="e.g. $65 / hr" required>
+                </div>
+                <div class="form-group">
+                    <label>Service Description</label>
+                    <textarea rows="2" placeholder="Describe what is included in this repair service..."></textarea>
+                </div>
+                <button type="submit" class="btn-action">Publish Service</button>
+            </form>
+        </div>
+
+        <!-- 3. Active Listings & Reviews -->
+        <div class="card">
+            <h3>3. Your Active Services & Customer Ratings</h3>
+            <div class="service-grid">
+                <div class="service-box">
+                    <h4>Home Circuit Inspection</h4>
+                    <p><strong>Rate:</strong> $75/hr</p>
+                    <p><strong>Completed Jobs:</strong> 12</p>
+                    <p><strong>Rating:</strong> ⭐ 4.9 (10 reviews)</p>
+                </div>
+                <div class="service-box">
+                    <h4>Ceiling Fan Installation</h4>
+                    <p><strong>Rate:</strong> $120 fixed</p>
+                    <p><strong>Completed Jobs:</strong> 5</p>
+                    <p><strong>Rating:</strong> ⭐ 5.0 (4 reviews)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
