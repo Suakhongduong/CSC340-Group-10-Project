@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>HomeFix - Provider Sign Up</title>
+    <style>
+        .provider-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .provider-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #444;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .btn-submit {
+            width: 100%;
+            background-color: blueviolet;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .btn-submit:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../Login.html" class="login">Login</a>
+        <a href="../Get Started.html" class="register">Get Started</a>
+    </nav>
+
+    <div class="provider-container">
+        <h2>Become a HomeFix Provider</h2>
+        <form action="Provider Dashboard.html">
+            <div class="form-group">
+                <label>Full Name / Business Name</label>
+                <input type="text" placeholder="e.g. John Doe Services" required>
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+                <label>Primary Service Specialty</label>
+                <select required>
+                    <option value="">Select a specialty...</option>
+                    <option value="Plumbing">Plumbing</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Handyman">Handyman</option>
+                    <option value="Home Repairs">Home Repairs</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Hourly Rate ($)</label>
+                <input type="number" placeholder="e.g. 50" required>
+            </div>
+            <div class="form-group">
+                <label>Short Bio / Experience</label>
+                <textarea rows="3" placeholder="Describe your experience and qualifications..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Create Provider Account</button>
+        </form>
+    </div>
+</body>
+</html>
