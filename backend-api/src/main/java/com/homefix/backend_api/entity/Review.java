@@ -1,29 +1,32 @@
 package com.homefix.backend_api.entity;
 
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 
 @Entity
 public class Review {
 
-    // Every review gets its own unique ID
+    // Every review gets a unique ID
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reviewId;
 
-    // Customers can give a rating from 1 to 5
+    // Rating must be between 1 and 5
     @Min(1)
     @Max(5)
     private int rating;
 
-    // The customer writes what they thought about the service
+    // Customer writes their experience
     @NotBlank
     private String comment;
 
-    // Many reviews can belong to one customer
+    // Automatically records when the review was created
+    private LocalDateTime createdAt;
+
+    // One customer can write multiple reviews
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
@@ -31,7 +34,15 @@ public class Review {
     // JPA needs an empty constructor
     public Review() {}
 
-    // Getters and setters let us access and update our fields
+    // Set the creation date before saving a new review
+    @PrePersist
+    public void onCreate() {
+        if (createdAt == null) {
+            createdAt = LocalDateTime.now();
+        }
+    }
+
+    // Getters and setters
 
     public Long getReviewId() {
         return reviewId;
@@ -55,6 +66,14 @@ public class Review {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     public Customer getCustomer() {
