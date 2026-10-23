@@ -12,9 +12,24 @@
 
 ### Base URLs
 
-**Local:** `http://localhost:8080/api`
+Local: http://localhost:8080/api
 
-**Production:** `https://homefix-backend-es6q.onrender.com/api`
+Production: https://homefix-backend-es6q.onrender.com/api
+
+Live API Endpoints
+
+API
+
+Endpoint
+
+Customer API
+
+https://homefix-backend-es6q.onrender.com/api/customers
+
+Provider API
+
+https://homefix-backend-es6q.onrender.com/api/providers
+
 
 The HomeFix Now backend uses Java, Spring Boot, Spring Data JPA, and PostgreSQL hosted on Neon.
 
