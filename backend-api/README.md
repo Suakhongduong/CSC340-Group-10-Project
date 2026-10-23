@@ -91,6 +91,4 @@ The API supports customer profiles, service requests, appointments, reviews, and
 | PUT | `/api/reviews/{id}` | Update a review | 200 OK |
 | DELETE | `/api/reviews/{id}` | Delete a review | 204 No Content |
 
-## Provider Services and Availability
 
-The provider-side API manages provider profiles, services, and availability slots. Its complete endpoint documentation should be added after confirming the implemented routes with the provider-side developer.
