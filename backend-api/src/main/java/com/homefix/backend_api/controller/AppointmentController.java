@@ -56,4 +56,35 @@ public class AppointmentController {
 
         return ResponseEntity.notFound().build();
     }
+    
+    // Reschedule an appointment
+    @PutMapping("/appointments/{id}")
+    public ResponseEntity<Appointment> rescheduleAppointment(
+            @PathVariable Long id,
+            @RequestBody Appointment updatedAppointment) {
+
+        return appointmentService
+                .rescheduleAppointment(id, updatedAppointment)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    // Cancel an appointment
+    @PutMapping("/appointments/{id}/cancel")
+    public ResponseEntity<Appointment> cancelAppointment(
+            @PathVariable Long id) {
+
+        return appointmentService.cancelAppointment(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    // Get all appointments belonging to a customer
+@GetMapping("/customers/{customerId}/appointments")
+public List<Appointment> getAppointmentsByCustomer(
+        @PathVariable Long customerId) {
+
+    return appointmentService.getAppointmentsByCustomer(customerId);
+}
+
 }

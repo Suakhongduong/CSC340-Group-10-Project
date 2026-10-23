@@ -84,4 +84,66 @@ public class AppointmentService {
         appointmentRepository.deleteById(id);
         return true;
     }
+
+
+    
+    // Reschedule an existing appointment
+    public Optional<Appointment> rescheduleAppointment(
+            Long id, Appointment updatedAppointment) {
+
+        Optional<Appointment> existing =
+                appointmentRepository.findById(id);
+
+        if (existing.isEmpty()) {
+            return Optional.empty();
+        }
+
+        Appointment appointment = existing.get();
+
+        // Update the appointment date
+        if (updatedAppointment.getAppointmentDate() != null) {
+            appointment.setAppointmentDate(
+                    updatedAppointment.getAppointmentDate());
+        }
+
+        // Update the start time
+        if (updatedAppointment.getStartTime() != null) {
+            appointment.setStartTime(
+                    updatedAppointment.getStartTime());
+        }
+
+        // Update the end time
+        if (updatedAppointment.getEndTime() != null) {
+            appointment.setEndTime(
+                    updatedAppointment.getEndTime());
+        }
+
+        appointment.setStatus("SCHEDULED");
+
+        return Optional.of(appointmentRepository.save(appointment));
+    }
+
+    // Cancel an appointment without deleting it
+    public Optional<Appointment> cancelAppointment(Long id) {
+
+        Optional<Appointment> existing =
+                appointmentRepository.findById(id);
+
+        if (existing.isEmpty()) {
+            return Optional.empty();
+        }
+
+        Appointment appointment = existing.get();
+        appointment.setStatus("CANCELLED");
+
+        return Optional.of(appointmentRepository.save(appointment));
+    }
+
+    // Get appointments belonging to a customer
+    public List<Appointment> getAppointmentsByCustomer(Long customerId) {
+
+        return appointmentRepository
+                .findByServiceRequest_Customer_CustomerId(customerId);
+    }
+
 }

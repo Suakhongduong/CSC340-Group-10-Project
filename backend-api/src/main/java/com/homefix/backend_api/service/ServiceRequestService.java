@@ -73,4 +73,52 @@ public class ServiceRequestService {
         requestRepository.deleteById(id);
         return true;
     }
+
+    
+    // Update a service request
+    public Optional<ServiceRequest> updateRequest(
+            Long id, ServiceRequest updatedRequest) {
+
+        Optional<ServiceRequest> existing =
+                requestRepository.findById(id);
+
+        if (existing.isEmpty()) {
+            return Optional.empty();
+        }
+
+        ServiceRequest request = existing.get();
+
+        if (updatedRequest.getDescription() != null) {
+            request.setDescription(updatedRequest.getDescription());
+        }
+
+        if (updatedRequest.getAddress() != null) {
+            request.setAddress(updatedRequest.getAddress());
+        }
+
+        if (updatedRequest.getNotes() != null) {
+            request.setNotes(updatedRequest.getNotes());
+        }
+
+        return Optional.of(requestRepository.save(request));
+    }
+
+    // Cancel a request without deleting it
+    public Optional<ServiceRequest> cancelRequest(Long id) {
+
+        Optional<ServiceRequest> existing =
+                requestRepository.findById(id);
+
+        if (existing.isEmpty()) {
+            return Optional.empty();
+        }
+
+        ServiceRequest request = existing.get();
+        request.setStatus("CANCELLED");
+
+        return Optional.of(requestRepository.save(request));
+    }
+
+
+
 }

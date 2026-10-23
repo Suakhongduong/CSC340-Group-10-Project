@@ -61,5 +61,28 @@ public class ServiceRequestController {
 
         return ResponseEntity.notFound().build();
     }
+
+    
+    // Update a service request
+    @PutMapping("/service-requests/{id}")
+    public ResponseEntity<ServiceRequest> updateRequest(
+            @PathVariable Long id,
+            @RequestBody ServiceRequest updatedRequest) {
+
+        return requestService.updateRequest(id, updatedRequest)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    // Cancel a service request
+    @PutMapping("/service-requests/{id}/cancel")
+    public ResponseEntity<ServiceRequest> cancelRequest(
+            @PathVariable Long id) {
+
+        return requestService.cancelRequest(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
 }
 

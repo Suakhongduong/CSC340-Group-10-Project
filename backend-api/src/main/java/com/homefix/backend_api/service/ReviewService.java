@@ -69,5 +69,32 @@ public class ReviewService {
         reviewRepository.deleteById(id);
         return true;
     }
+
+    
+    // Update a review
+    public Optional<Review> updateReview(
+            Long id, Review updatedReview) {
+
+        Optional<Review> existing =
+                reviewRepository.findById(id);
+
+        if (existing.isEmpty()) {
+            return Optional.empty();
+        }
+
+        Review review = existing.get();
+
+        if (updatedReview.getRating() >= 1
+                && updatedReview.getRating() <= 5) {
+            review.setRating(updatedReview.getRating());
+        }
+
+        if (updatedReview.getComment() != null) {
+            review.setComment(updatedReview.getComment());
+        }
+
+        return Optional.of(reviewRepository.save(review));
+    }
+
 }
 
