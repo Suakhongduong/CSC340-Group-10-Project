@@ -63,5 +63,18 @@ public class ReviewController {
 
         return ResponseEntity.notFound().build();
     }
+
+    
+    // Update an existing review
+    @PutMapping("/reviews/{id}")
+    public ResponseEntity<Review> updateReview(
+            @PathVariable Long id,
+            @RequestBody Review updatedReview) {
+
+        return reviewService.updateReview(id, updatedReview)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
 }
 
