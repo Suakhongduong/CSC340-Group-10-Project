@@ -87,4 +87,12 @@ The API supports customer profiles, service requests, appointments, reviews, and
 | PUT | `/api/reviews/{id}` | Update a review | 200 OK |
 | DELETE | `/api/reviews/{id}` | Delete a review | 204 No Content |
 
+## Providers
 
+| Method | Path | Purpose | Response Code |
+|---|---|---|---|
+| GET | `/api/providers` | Get all providers | 200 OK |
+| GET | `/api/providers/{id}` | Get provider by ID | 200 OK |
+| POST | `/api/providers` | Create a new provider | 201 Created |
+| PUT | `/api/providers/{id}` | Update provider details | 200 OK |
+| DELETE | `/api/providers/{id}` | Delete a provider | 204 No Content |
