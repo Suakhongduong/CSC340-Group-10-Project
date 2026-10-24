@@ -12,8 +12,6 @@
 
 ### Base URLs
 
-Local: http://localhost:8080/api
-
 Production: https://homefix-backend-es6q.onrender.com/api
 
 ### Live API Endpoints
