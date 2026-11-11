@@ -62,31 +62,35 @@
     </nav>
 
     <div class="dashboard-container">
-        <!-- 1. Profile Management -->
+        <!-- Profile settings form -->
         <div class="card">
             <h3>1. Provider Profile Settings</h3>
             <form id="profileForm">
                 <div class="form-group">
                     <label>Business Name</label>
-                    <input type="text" id="businessNameInput" value="Khanh Repairs & Electrical">
+                    <input type="text" id="businessNameInput" required>
                 </div>
                 <div class="form-group">
                     <label>Specialty</label>
                     <select id="specialtySelect">
-                        <option selected>Electrical</option>
-                        <option>Plumbing</option>
-                        <option>Handyman</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="Handyman">Handyman</option>
                     </select>
                 </div>
                 <div class="form-group">
+                    <label>Hourly Rate ($/hr)</label>
+                    <input type="number" step="0.01" id="hourlyRateInput" placeholder="e.g. 65">
+                </div>
+                <div class="form-group">
                     <label>Bio / Description</label>
-                    <textarea id="bioInput" rows="2">Licensed electrician with over 8 years of residential maintenance experience.</textarea>
+                    <textarea id="bioInput" rows="2"></textarea>
                 </div>
                 <button type="submit" class="btn-action">Update Profile</button>
             </form>
         </div>
 
-        <!-- 2. Create Service Listing -->
+        <!-- Form to add a new repair service -->
         <div class="card">
             <h3>2. Post a New Repair Service</h3>
             <form id="serviceForm">
@@ -95,8 +99,8 @@
                     <input type="text" id="serviceTitleInput" placeholder="e.g. Electrical Outlet & Panel Repair" required>
                 </div>
                 <div class="form-group">
-                    <label>Price Rate ($/hr or Fixed)</label>
-                    <input type="text" id="servicePriceInput" placeholder="e.g. $65 / hr" required>
+                    <label>Price Rate ($/hr)</label>
+                    <input type="number" step="0.01" id="servicePriceInput" placeholder="e.g. 65" required>
                 </div>
                 <div class="form-group">
                     <label>Service Description</label>
@@ -106,108 +110,167 @@
             </form>
         </div>
 
-        <!-- 3. Active Listings & Reviews -->
+        <!-- Active services loaded from DB -->
         <div class="card">
-            <h3>3. Your Active Services & Customer Ratings</h3>
-            <div class="service-grid">
-                <div class="service-box">
-                    <h4>Home Circuit Inspection</h4>
-                    <p><strong>Rate:</strong> $75/hr</p>
-                    <p><strong>Completed Jobs:</strong> 12</p>
-                    <p><strong>Rating:</strong> ⭐ 4.9 (10 reviews)</p>
-                </div>
-                <div class="service-box">
-                    <h4>Ceiling Fan Installation</h4>
-                    <p><strong>Rate:</strong> $120 fixed</p>
-                    <p><strong>Completed Jobs:</strong> 5</p>
-                    <p><strong>Rating:</strong> ⭐ 5.0 (4 reviews)</p>
-                </div>
+            <h3>3. Your Active Services</h3>
+            <div class="service-grid" id="activeServicesGrid">
+                <p>Loading services...</p>
             </div>
         </div>
     </div>
 
-    <!-- Connect UI to Backend API & Neon DB -->
     <script>
-      const urlParams = new URLSearchParams(window.location.search);
-      let providerId = urlParams.get('id') || 1;
+      // Get provider ID from URL (?id=1), default to 1
+      const params = new URLSearchParams(window.location.search);
+      let providerId = params.get('id') || 1;
+      let providerData = {};
+      let services = [];
 
-      // 1. Load real provider data from Neon DB into the UI
-      async function loadProviderProfile() {
+      // Split bio text and saved services JSON stored inside the bio column
+      function parseBioAndServices(rawBio) {
+        if (!rawBio) return { bioText: '', list: [] };
+        const marker = '\n---SERVICES---\n';
+        if (rawBio.includes(marker)) {
+          const parts = rawBio.split(marker);
+          try {
+            return { bioText: parts[0], list: JSON.parse(parts[1]) };
+          } catch {
+            return { bioText: parts[0], list: [] };
+          }
+        }
+        return { bioText: rawBio, list: [] };
+      }
+
+      // Render service cards into the grid
+      function renderServices() {
+        const grid = document.getElementById('activeServicesGrid');
+        if (!grid) return;
+
+        if (services.length === 0) {
+          grid.innerHTML = '<p>No services posted yet.</p>';
+          return;
+        }
+
+        grid.innerHTML = services.map(s => `
+          <div class="service-box">
+            <h4>${s.title}</h4>
+            <p><strong>Rate:</strong> $${s.rate}/hr</p>
+            <p>${s.desc || ''}</p>
+          </div>
+        `).join('');
+      }
+
+      // Load provider profile and services from Neon DB
+      async function loadDashboard() {
         try {
           const res = await fetch(`/api/providers/${providerId}`);
-          if (!res.ok) return; // Keep default values if ID doesn't exist yet
+          if (!res.ok) {
+            alert('Provider not found.');
+            document.getElementById('activeServicesGrid').innerHTML = '<p>Provider not found.</p>';
+            return;
+          }
           const data = await res.json();
+          providerData = data;
 
-          const nameInput = document.getElementById('businessNameInput');
-          const bioInput = document.getElementById('bioInput');
-          
-          if (nameInput && (data.businessName || data.name)) {
-            nameInput.value = data.businessName || data.name;
+          document.getElementById('businessNameInput').value = data.name || '';
+          document.getElementById('hourlyRateInput').value = data.hourlyRate ?? '';
+          if (data.serviceType) {
+            document.getElementById('specialtySelect').value = data.serviceType;
           }
-          if (bioInput && (data.servicesOffered || data.description)) {
-            bioInput.value = data.servicesOffered || data.description;
-          }
+
+          const parsed = parseBioAndServices(data.bio);
+          document.getElementById('bioInput').value = parsed.bioText;
+          services = parsed.list;
+          renderServices();
         } catch (err) {
-          console.error('Error fetching provider:', err);
+          console.error(err);
         }
       }
 
-      // 2. Save profile data to Neon DB (PUT if exists, fallback to POST if new)
-      document.getElementById('profileForm')?.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const bName = document.getElementById('businessNameInput')?.value || 'Khanh Repairs';
-        const bio = document.getElementById('bioInput')?.value || 'Electrical & Handyman';
-        const specialty = document.getElementById('specialtySelect')?.value || 'Electrical';
+      // Save changes to backend using exact Provider entity fields
+      async function syncProvider(updates) {
+        const currentBio = updates.bio !== undefined
+          ? updates.bio
+          : document.getElementById('bioInput').value;
 
-        const payload = {
-          name: bName,
-          businessName: bName,
-          email: "khanh.provider@homefix.com",
-          phone: "555-0199",
-          specialty: specialty,
-          servicesOffered: bio,
-          description: bio
+        const combinedBio = services.length > 0
+          ? `${currentBio}\n---SERVICES---\n${JSON.stringify(services)}`
+          : currentBio;
+
+        const rateVal = updates.hourlyRate !== undefined
+          ? updates.hourlyRate
+          : parseFloat(document.getElementById('hourlyRateInput').value);
+
+        const body = {
+          name: updates.name || document.getElementById('businessNameInput').value || 'Provider',
+          email: providerData.email || 'provider@homefix.com',
+          serviceType: updates.serviceType || document.getElementById('specialtySelect').value || 'Electrical',
+          hourlyRate: isNaN(rateVal) ? 65.0 : rateVal,
+          bio: combinedBio
         };
 
-        try {
-          // Try updating existing provider first
-          let res = await fetch(`/api/providers/${providerId}`, {
-            method: 'PUT',
+        let res = await fetch(`/api/providers/${providerId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+
+        if (!res.ok) {
+          res = await fetch('/api/providers', {
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
+            body: JSON.stringify(body)
           });
+        }
 
-          // If ID doesn't exist in Neon DB yet, create a new provider record via POST
-          if (!res.ok) {
-            res = await fetch('/api/providers', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload)
-            });
-          }
+        if (res.ok) {
+          const saved = await res.json();
+          providerData = saved;
+          providerId = saved.id || providerId;
+          window.history.replaceState({}, '', `?id=${providerId}`);
+          return true;
+        }
+        return false;
+      }
 
-          if (res.ok) {
-            const savedData = await res.json();
-            const newId = savedData.id || savedData.providerId || providerId;
-            alert('Saved to Neon Database successfully! (Provider ID: ' + newId + ')');
-            // Update URL with the real saved ID so F5 reloads it properly
-            window.history.replaceState({}, '', `?id=${newId}`);
-            providerId = newId;
-          } else {
-            const errText = await res.text();
-            alert('Failed to save: ' + res.status + ' - ' + errText);
-          }
-        } catch (err) {
-          alert('Error saving profile: ' + err.message);
+      // Handle profile settings update
+      document.getElementById('profileForm')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const ok = await syncProvider({
+          name: document.getElementById('businessNameInput').value,
+          serviceType: document.getElementById('specialtySelect').value,
+          hourlyRate: parseFloat(document.getElementById('hourlyRateInput').value),
+          bio: document.getElementById('bioInput').value
+        });
+        alert(ok ? 'Profile updated!' : 'Could not update profile.');
+      });
+
+      // Handle adding a new service
+      document.getElementById('serviceForm')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const price = parseFloat(document.getElementById('servicePriceInput').value);
+        services.push({
+          title: document.getElementById('serviceTitleInput').value,
+          rate: isNaN(price) ? 0 : price,
+          desc: document.getElementById('serviceDescInput').value
+        });
+
+        const ok = await syncProvider({
+          hourlyRate: isNaN(price) ? undefined : price
+        });
+
+        if (ok) {
+          alert('Service published!');
+          document.getElementById('serviceForm').reset();
+          if (!isNaN(price)) document.getElementById('hourlyRateInput').value = price;
+          renderServices();
+        } else {
+          services.pop();
+          alert('Could not publish service.');
         }
       });
 
-      // 3. Display confirmation when a new repair service is created
-      document.getElementById('serviceForm')?.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Service published successfully!');
-      });
-
-      document.addEventListener('DOMContentLoaded', loadProviderProfile);
+      document.addEventListener('DOMContentLoaded', loadDashboard);
     </script>
+</body>
+</html>
