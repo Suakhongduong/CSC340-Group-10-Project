@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../style.css">
+
+    <title>HomeFix - Customer Profile</title>
+</head>
+
+<body>
+
+    <nav class="site-nav">
+
+        <a href="Customer Home.html" class="logo">
+            HomeFix
+        </a>
+
+        <div class="nav-links">
+
+            <a href="Customer Home.html">
+                Home
+            </a>
+
+            <a href="Services.html">
+                Services
+            </a>
+
+            <a href="Customer Profile.html" class="active">
+                Profile
+            </a>
+
+            <a href="Appointments.html">
+                Appointments
+            </a>
+
+            <a href="../index.html">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="customer-page">
+
+        <div class="customer-box">
+
+            <span class="blue-label">
+                MY PROFILE
+            </span>
+
+            <h1>
+                Customer Profile
+            </h1>
+
+            <p>
+                Your HomeFix account information.
+            </p>
+             <form id="profile-form">
+
+    
+    <label for="profile-name">
+        Full Name
+    </label>
+
+<input
+    type="text"
+    id="profile-name"
+    required
+>
+
+
+    <label for="profile-email">
+        Email
+    </label>
+
+<input
+    type="email"
+    id="profile-email"
+    required
+>
+
+
+<label for="profile-phone">
+    Phone Number
+</label>
+
+<input
+    type="tel"
+    id="profile-phone"
+    required
+    minlength="10"
+    maxlength="20"
+>
+
+
+<label for="profile-address">
+    Home Address
+</label>
+
+<input
+    type="text"
+    id="profile-address"
+    required
+>
+
+
+<label for="profile-city">
+    City
+</label>
+
+<input
+    type="text"
+    id="profile-city"
+    required
+>
+<!-- Button saves changes to the backend -->
+        <button type="submit" class="main-button">
+            Save Changes
+        </button>
+
+        <!-- Displays success or error messages -->
+        <p id="profile-message" role="status" aria-live="polite"></p>
+
+    </form>
+
+
+        </div>
+
+    </main>
+
+
+    
+<script>
+// Get the customer ID saved during signup.
+const customerId = sessionStorage.getItem("customerId");
+const message = document.getElementById("profile-message");
+
+// Keep track of the customer's saved information.
+let currentCustomer = null;
+
+// Load the customer's information from Neon through our API.
+async function loadProfile() {
+    if (!customerId) {
+        message.textContent = "No customer selected. Please create a profile first.";
+        return;
+    }
+
+    try {
+        // GET requests retrieve information from the backend.
+        const response = await fetch(`/api/customers/${customerId}`);
+
+        if (!response.ok) {
+            message.textContent = response.status === 404
+                ? "Customer profile not found."
+                : "Unable to load customer profile.";
+            return;
+        }
+
+        // Convert the JSON response into a JavaScript object.
+        const customer = await response.json();
+        currentCustomer = customer;
+
+        // Display the saved information in the input fields.
+        document.getElementById("profile-name").value =
+            customer.firstName + " " + customer.lastName;
+
+        document.getElementById("profile-email").value = customer.email;
+        document.getElementById("profile-phone").value = customer.phoneNumber;
+
+        // Our backend stores address and city in one field.
+        const addressParts = (customer.address || "").split(/,\s*/);
+        document.getElementById("profile-city").value =
+            addressParts.length > 1 ? addressParts.pop() : "";
+
+        document.getElementById("profile-address").value =
+            addressParts.join(", ");
+
+    } catch (error) {
+        console.error("Profile loading error:", error);
+        message.textContent = "Unable to connect to the server.";
+    }
+}
+
+// Save changes when the customer submits the profile form.
+document.getElementById("profile-form").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    if (!currentCustomer) {
+        message.textContent = "Load a customer profile before saving.";
+        return;
+    }
+
+    // Get the updated information from the form.
+    const fullName = document.getElementById("profile-name").value.trim();
+    const nameParts = fullName.split(/\s+/);
+
+    if (nameParts.length < 2) {
+        message.textContent = "Please enter your first and last name.";
+        return;
+    }
+
+    const address = document.getElementById("profile-address").value.trim();
+    const city = document.getElementById("profile-city").value.trim();
+
+    // Create an updated Customer object matching our Java entity.
+    const updatedCustomer = {
+        firstName: nameParts[0],
+        lastName: nameParts.slice(1).join(" "),
+        email: document.getElementById("profile-email").value.trim(),
+        phoneNumber: document.getElementById("profile-phone").value.trim(),
+        address: address + ", " + city
+    };
+
+    try {
+        // PUT requests update existing information in the database.
+        const response = await fetch(`/api/customers/${customerId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updatedCustomer)
+        });
+
+        if (!response.ok) {
+            message.textContent = response.status === 404
+                ? "Customer profile not found."
+                : "Unable to save changes. Check your information.";
+            return;
+        }
+
+        // The backend returns the updated customer.
+        currentCustomer = await response.json();
+
+        message.textContent = "Profile updated successfully!";
+
+    } catch (error) {
+        console.error("Profile update error:", error);
+        message.textContent = "Unable to connect to the server.";
+    }
+});
+
+// Automatically load the profile when the page opens.
+loadProfile();
+</script>
+
+
+</body>
+
+</html>
