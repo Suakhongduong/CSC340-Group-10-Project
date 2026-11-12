@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>HomeFix - Demo Customer Access</title>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <a href="index.html" class="logo">HomeFix</a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="Get Started.html">Get Started</a>
+        </div>
+    </nav>
+
+    <main class="customer-page">
+
+        <div class="customer-box">
+
+            <h1>Welcome Back</h1>
+
+            <p>
+                Select an existing demo customer to continue.
+            </p>
+
+            <!-- Demo access form -->
+            <form id="login-form">
+
+                <label for="customer-id">Customer ID</label>
+
+                <input
+                    type="number"
+                    id="customer-id"
+                    min="1"
+                    step="1"
+                    placeholder="Enter your customer ID"
+                    required
+                >
+
+                <button type="submit" class="primary-button">
+                    Continue as Customer
+                </button>
+
+                <p id="login-message" role="status" aria-live="polite"></p>
+
+            </form>
+
+            <p>
+                Don't have a profile?
+                <a href="Customer/Customer Sign Up.html">
+                    Create an Account
+                </a>
+            </p>
+
+        </div>
+
+    </main>
+
+    <script>
+
+        // Get the login form and message element.
+        const loginForm = document.getElementById("login-form");
+        const message = document.getElementById("login-message");
+
+        // Run when the customer submits the form.
+        loginForm.addEventListener("submit", async function(event) {
+
+            // Prevent the page from refreshing.
+            event.preventDefault();
+
+            const customerId =
+                document.getElementById("customer-id").value.trim();
+
+            message.textContent = "Checking customer...";
+
+            try {
+
+                // Check whether the customer exists in Neon.
+                const response = await fetch(`/api/customers/${customerId}`);
+
+                if (response.status === 404) {
+                    message.textContent = "Customer not found.";
+                    return;
+                }
+
+                if (!response.ok) {
+                    message.textContent = "Unable to load customer.";
+                    return;
+                }
+
+                // Save the selected customer ID for this browser tab.
+                sessionStorage.setItem("customerId", customerId);
+
+                // Open the customer dashboard.
+                window.location.href = "Customer/Customer Home.html";
+
+            } catch (error) {
+
+                console.error("Customer lookup error:", error);
+                message.textContent = "Unable to connect to the server.";
+            }
+        });
+
+    </script>
+
+</body>
+</html>

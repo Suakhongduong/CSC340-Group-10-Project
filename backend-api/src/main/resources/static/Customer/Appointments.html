@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../style.css">
+
+    <title>HomeFix - Appointments</title>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+
+        <a href="Customer Home.html" class="logo">
+            HomeFix
+        </a>
+
+        <div class="nav-links">
+            <a href="Customer Home.html">Home</a>
+            <a href="Services.html">Services</a>
+            <a href="Customer Profile.html">Profile</a>
+            <a href="Appointments.html" class="active">Appointments</a>
+        </div>
+
+    </nav>
+
+
+    <main class="content-page">
+
+        <!-- Page heading -->
+        <div class="page-title">
+
+            <span class="blue-label">
+                YOUR SERVICES
+            </span>
+
+            <h1>Appointments</h1>
+
+            <p>
+                View your upcoming and previous HomeFix services.
+            </p>
+
+        </div>
+
+
+        <!-- Upcoming appointments -->
+        <section class="appointment-section">
+
+            <div class="appointment-heading">
+
+                <h2>Upcoming</h2>
+
+                <span class="appointment-status" id="upcoming-count">
+                    0 Scheduled
+                </span>
+
+            </div>
+
+            <!-- JavaScript inserts upcoming appointments here -->
+            <div id="upcoming-appointments"></div>
+
+        </section>
+
+
+        <!-- Completed appointments -->
+        <section class="appointment-section">
+
+            <div class="appointment-heading">
+                <h2>Completed Services</h2>
+            </div>
+
+            <!-- JavaScript inserts completed appointments here -->
+            <div id="completed-appointments"></div>
+
+        </section>
+
+        <!-- Displays loading and error messages -->
+        <p id="appointments-message" role="status" aria-live="polite"></p>
+
+    </main>
+
+
+    <script>
+
+        // Get the customer ID saved during signup.
+        const customerId = sessionStorage.getItem("customerId");
+
+        // Get the HTML containers for our appointment cards.
+        const upcomingContainer =
+            document.getElementById("upcoming-appointments");
+
+        const completedContainer =
+            document.getElementById("completed-appointments");
+
+        const message =
+            document.getElementById("appointments-message");
+
+
+        // Create an appointment card using database information.
+        function createAppointmentCard(appointment) {
+
+            const card = document.createElement("article");
+            card.className = "appointment-card";
+
+            // Display the appointment date.
+            const dateBox = document.createElement("div");
+            dateBox.className = "appointment-date";
+
+            const dateText = appointment.appointmentDate || "";
+
+            const dateParts = dateText.split("-");
+
+            const day = document.createElement("strong");
+            day.textContent = dateParts[2] || "--";
+
+            const month = document.createElement("span");
+
+            if (dateParts.length === 3) {
+                const monthNumber = Number(dateParts[1]);
+
+                const months = [
+                    "JAN", "FEB", "MAR", "APR",
+                    "MAY", "JUN", "JUL", "AUG",
+                    "SEP", "OCT", "NOV", "DEC"
+                ];
+
+                month.textContent = months[monthNumber - 1] || "---";
+            } else {
+                month.textContent = "---";
+            }
+
+            dateBox.append(day, month);
+
+
+            // Create the appointment details.
+            const details = document.createElement("div");
+            details.className = "appointment-details";
+
+            const status = document.createElement("span");
+            status.className = "blue-label";
+            status.textContent = appointment.status || "SCHEDULED";
+
+            const title = document.createElement("h2");
+            title.textContent =
+                `Appointment #${appointment.appointmentId}`;
+
+            const date = document.createElement("p");
+            date.textContent =
+                `Date: ${appointment.appointmentDate || "Not scheduled"}`;
+
+            const time = document.createElement("p");
+            time.textContent =
+                `Time: ${appointment.startTime || "Not set"}`;
+
+            const address = document.createElement("p");
+            address.textContent =
+                `Address: ${appointment.address || "Not provided"}`;
+
+            // Add all details to the appointment card.
+            details.append(status, title, date, time, address);
+
+            card.append(dateBox, details);
+
+            return card;
+        }
+
+
+        // Retrieve appointments from our Spring Boot API.
+        async function loadAppointments() {
+
+            // Make sure a customer ID exists.
+            if (!customerId) {
+                message.textContent =
+                    "No customer selected. Please create a profile first.";
+                return;
+            }
+
+            message.textContent = "Loading appointments...";
+
+            try {
+
+                // GET request retrieves appointments for this customer.
+                const response = await fetch(
+                    `/api/customers/${customerId}/appointments`
+                );
+
+                // Handle errors returned by Spring Boot.
+                if (!response.ok) {
+                    message.textContent = response.status === 404
+                        ? "Customer or appointments endpoint not found."
+                        : "Unable to load appointments.";
+                    return;
+                }
+
+                // Convert the JSON response into a JavaScript array.
+                const appointments = await response.json();
+
+                // Clear existing appointment cards.
+                upcomingContainer.innerHTML = "";
+                completedContainer.innerHTML = "";
+
+                let upcomingCount = 0;
+                let completedCount = 0;
+
+
+                // Loop through each appointment.
+                appointments.forEach(function(appointment) {
+
+                    const status =
+                        (appointment.status || "").toUpperCase();
+
+                    // Completed appointments go in the previous section.
+                    if (status === "COMPLETED") {
+
+                        const card = createAppointmentCard(appointment);
+                        card.classList.add("completed");
+
+                        completedContainer.appendChild(card);
+                        completedCount++;
+
+                    // Cancelled appointments are not shown.
+                    } else if (status !== "CANCELLED") {
+
+                        upcomingContainer.appendChild(
+                            createAppointmentCard(appointment)
+                        );
+
+                        upcomingCount++;
+                    }
+
+                });
+
+
+                // Update the number of scheduled appointments.
+                document.getElementById("upcoming-count").textContent =
+                    `${upcomingCount} Scheduled`;
+
+
+                // Show messages if there are no appointments.
+                if (upcomingCount === 0) {
+                    upcomingContainer.textContent =
+                        "No upcoming appointments.";
+                }
+
+                if (completedCount === 0) {
+                    completedContainer.textContent =
+                        "No completed services yet.";
+                }
+
+                // Clear the loading message.
+                message.textContent = "";
+
+            } catch (error) {
+
+                // Handle network or JavaScript errors.
+                console.error("Appointment loading error:", error);
+
+                message.textContent =
+                    "Unable to connect to the server.";
+            }
+        }
+
+
+        // Automatically load appointments when the page opens.
+        loadAppointments();
+
+    </script>
+
+</body>
+</html>

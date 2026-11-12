@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +36,7 @@
                 Appointments
             </a>
 
-            <a href="../index.html">
+            <a href="../Login.html" id="logout-link">
                 Logout
             </a>
 
@@ -64,10 +65,7 @@
                     maintenance, and projects around your home.
                 </p>
 
-                <a
-                    href="Services.html"
-                    class="main-button"
-                >
+                <a href="Services.html" class="main-button">
                     Find a Service
                 </a>
 
@@ -119,10 +117,7 @@
 
             <div class="dashboard-grid">
 
-                <a
-                    href="Services.html"
-                    class="dashboard-card"
-                >
+                <a href="Services.html" class="dashboard-card">
 
                     <h3>
                         Find a Service
@@ -140,10 +135,7 @@
                 </a>
 
 
-                <a
-                    href="Customer Profile.html"
-                    class="dashboard-card"
-                >
+                <a href="Customer Profile.html" class="dashboard-card">
 
                     <h3>
                         My Profile
@@ -161,10 +153,7 @@
                 </a>
 
 
-                <a
-                    href="Appointments.html"
-                    class="dashboard-card"
-                >
+                <a href="Appointments.html" class="dashboard-card">
 
                     <h3>
                         Appointments
@@ -182,10 +171,7 @@
                 </a>
 
 
-                <a
-                    href="Reviews.html"
-                    class="dashboard-card"
-                >
+                <a href="Reviews.html" class="dashboard-card">
 
                     <h3>
                         Reviews
@@ -226,16 +212,20 @@
 
             </div>
 
-            <a
-                href="Services.html"
-                class="outline-button"
-            >
+            <a href="Services.html" class="outline-button">
                 Explore Services
             </a>
 
         </section>
 
     </main>
+    <script>
+    // Clear the selected demo customer when logging out.
+    document.getElementById("logout-link").addEventListener("click", function() {
+        sessionStorage.removeItem("customerId");
+    });
+</script>
 
 </body>
+
 </html>

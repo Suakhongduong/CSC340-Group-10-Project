@@ -154,6 +154,7 @@
                 >
                     Create Account
                 </button>
+                <p id="signup-message" role="status" aria-live="polite"></p>
 
             </form>
 
@@ -168,42 +169,82 @@
     </main>
 
 
-    <script>
+    
+<script>
+document.getElementById("signup-form").addEventListener("submit", async function(event) {
+    event.preventDefault();
 
-        document.getElementById("signup-form").addEventListener("submit", function(event) {
+    console.log("Signup form submitted!");
 
-            event.preventDefault();
+    const message = document.getElementById("signup-message");
 
-            localStorage.setItem(
-                "fullName",
-                document.getElementById("name").value
-            );
+    // Get the information entered into the form.
+    const fullName = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const city = document.getElementById("city").value.trim();
 
-            localStorage.setItem(
-                "email",
-                document.getElementById("email").value
-            );
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirm-password").value;
 
-            localStorage.setItem(
-                "phone",
-                document.getElementById("phone").value
-            );
+    // Make sure both password fields match.
+    if (password !== confirmPassword) {
+        message.textContent = "Passwords do not match.";
+        return;
+    }
 
-            localStorage.setItem(
-                "address",
-                document.getElementById("address").value
-            );
+    // Split the full name into first name and last name.
+    const nameParts = fullName.split(/\s+/);
 
-            localStorage.setItem(
-                "city",
-                document.getElementById("city").value
-            );
+    if (nameParts.length < 2) {
+        message.textContent = "Please enter your first and last name.";
+        return;
+    }
 
-            window.location.href = "Customer Home.html";
+    // Create a customer object that matches our Java Customer entity.
+    const customer = {
+        firstName: nameParts[0],
+        lastName: nameParts.slice(1).join(" "),
+        email: email,
+        phoneNumber: phone,
+        address: address + ", " + city
+    };
 
+    try {
+        // Send the customer information to our Spring Boot API.
+        const response = await fetch("/api/customers", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(customer)
         });
 
-    </script>
+        // Display an error if the backend rejects the request.
+        if (!response.ok) {
+            message.textContent = "Could not create account. Please check your information.";
+            return;
+        }
+
+        // Convert the API response from JSON into a JavaScript object.
+        const savedCustomer = await response.json();
+
+        // Remember the customer ID so other pages can load their profile.
+        sessionStorage.setItem("customerId", savedCustomer.customerId);
+
+        // Display a success message and open the customer homepage.
+        message.textContent = "Customer profile created successfully!";
+        window.location.href = "Customer Home.html";
+
+    } catch (error) {
+        // Handle errors such as the server being unavailable.
+        console.error("Registration error:", error);
+        message.textContent = "Unable to connect to the server.";
+    }
+});
+</script>
+
 
 </body>
 
